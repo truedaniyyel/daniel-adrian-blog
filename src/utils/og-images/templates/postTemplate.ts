@@ -13,7 +13,7 @@ export async function generatePostOgSvg(
   const markup = html(`
     <div style="display: flex; align-items: center; justify-content: center; width: 1200px; height: 630px; background: linear-gradient(to bottom right, #fbc2eb, #ff6a88); position: relative; overflow: hidden; border-radius: 16px;">
 
-      <img width="1200" height="630" src="${imageUrl}" alt="Post Cover" style="object-fit: cover; object-position: top; height: 100%; width: 100%;">
+      <img width="1200" height="630" src="https://raw.githubusercontent.com/truedaniyyel/daniel-adrian-blog/refs/heads/main/public/content/${post.id}.png" alt="Post Cover" style="object-fit: cover; object-position: top; height: 100%; width: 100%;">
 
       <div style="position: absolute; display: flex; background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.8), black); width: 1200px; height: 630px;"></div>
 
