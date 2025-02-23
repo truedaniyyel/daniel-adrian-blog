@@ -3,7 +3,7 @@ import type { ImageConfig } from './types';
 import type { CollectionEntry } from 'astro:content';
 import { generatePostOgSvg } from './templates/postTemplate';
 import { generateSiteOgSvg } from './templates/siteTemplate';
-import { DEFAULT_FONTS, DEFAULT_SVG, DEFAULT_IMAGE } from './config';
+import { DEFAULT_SVG, DEFAULT_IMAGE } from './config';
 
 export async function svgBufferToImageBuffer(
   svg: string,

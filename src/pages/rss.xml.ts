@@ -1,6 +1,5 @@
 import rss from '@astrojs/rss';
 import { SITE } from '@consts';
-import { slugifyStr } from '@utils/slugify';
 import { posts } from '@utils/getSortedPosts';
 
 type Context = {
@@ -20,10 +19,7 @@ export async function GET(context: Context) {
       author: data.author || SITE.AUTHOR,
       categories: data.tags || [],
       enclosure: {
-        url: new URL(
-          `/${collection}/${slugifyStr(data.title)}.webp`,
-          context.site
-        ).href,
+        url: new URL(`/${collection}/${id}.webp`, context.site).href,
         type: 'image/webp',
         length: 0,
       },

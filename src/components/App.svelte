@@ -101,7 +101,7 @@
             {/each}
           </ul>
           <div class="other-links">
-            <a href="${SITE.CANONICAL_URL}/sitemap-index.xml">SiteMap</a>
+            <a href="/sitemap-index.xml">SiteMap</a>
           </div>
         </div>
       </div>

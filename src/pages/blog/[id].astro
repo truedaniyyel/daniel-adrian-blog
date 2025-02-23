@@ -1,6 +1,6 @@
 ---
 import PostLayout from '@layouts/PostLayout.astro';
-import { blog } from '@utils/getSortedPosts.ts';
+import { blog } from '@utils/getSortedPosts';
 
 export async function getStaticPaths() {
   return blog.map(post => ({

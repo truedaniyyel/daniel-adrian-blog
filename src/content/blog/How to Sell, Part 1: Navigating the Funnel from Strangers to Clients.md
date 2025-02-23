@@ -3,7 +3,7 @@ title: 'How to Sell, Part 1: Navigating the Funnel from Strangers to Clients'
 pubDatetime: 2025-01-28
 description: 'Success in marketing isn’t about selling — it’s about building relationships that turn total strangers into loyal clients.'
 author: 'Daniel Adrian'
-image: 'src/assets/content/how-to-sell-part-1.webp'
+image: 'src/assets/content/how-to-sell-part-1-navigating-the-funnel-from-strangers-to-clients.webp'
 tags: ['marketing strategy']
 ---
 

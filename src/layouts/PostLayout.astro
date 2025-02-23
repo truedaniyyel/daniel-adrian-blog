@@ -2,7 +2,6 @@
 import uiIcons from '@assets/uiIcons';
 import BaseLayout from '@layouts/BaseLayout.astro';
 import TOC from '@components/TOC.svelte';
-import { slugifyStr } from '@utils/slugify';
 import { formatDate } from '@utils/formatDate';
 import { readingTime } from '@utils/readingTime';
 import { posts } from '@utils/getSortedPosts';
@@ -22,7 +21,7 @@ const validHeadings = headings.filter(heading => heading.depth === 2);
 const imageUrl =
   typeof post.data.image === 'string' ? post.data.image : post.data.image?.src;
 
-const ogUrl = `/${post.collection}/${slugifyStr(post.data.title)}.webp`;
+const ogUrl = `/${post.collection}/${post.id}.webp`;
 
 const repoUrl = post.data?.repoUrl;
 const demoUrl = post.data?.demoUrl;
