@@ -7,6 +7,9 @@ html {
 html.dark {
   color: var(--text-dark);
   background-image: var(--bg-dark);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 body {

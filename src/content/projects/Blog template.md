@@ -5,6 +5,7 @@ description: '...'
 author: 'Daniel Adrian'
 image: 'https://docs.astro.build/assets/rose.webp'
 tags: ['astro']
+draft: true
 ---
 
 ## Time

@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { SITE } from '@consts';
   import { SOCIALS } from '@consts';
   import uiIcons from '@assets/uiIcons';
   import socialIcons from '@assets/socialIcons';

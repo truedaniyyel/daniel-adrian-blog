@@ -1,6 +1,7 @@
 <script lang="ts">
   import uiIcons from '@assets/uiIcons';
   import { onMount } from 'svelte';
+  import { fade } from 'svelte/transition';
 
   interface Props {
     threshold?: number;
@@ -41,6 +42,7 @@
     class="btn primary-btn"
     onclick={scrollToTop}
     aria-label="Scroll to the top"
+    transition:fade={{ duration: 200 }}
   >
     {@html uiIcons.goUp}
   </button>

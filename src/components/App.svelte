@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { SITE } from '@consts';
   import { SOCIALS } from '@consts';
   import uiIcons from '@assets/uiIcons';
   import socialIcons from '@assets/socialIcons';
@@ -108,7 +107,11 @@
     </nav>
   </header>
 
-  <InfiniteScroll posts={filteredPosts} itemsPerLoad={6} />
+  {#if filteredPosts.length === 0}
+    <p class="no-posts-message">No posts available.</p>
+  {:else}
+    <InfiniteScroll posts={filteredPosts} itemsPerLoad={6} />
+  {/if}
 
   <ScrollToTop />
 </main>
@@ -198,6 +201,17 @@
     justify-content: center;
     gap: var(--px-16);
     margin-bottom: var(--px-16);
+  }
+
+  .no-posts-message {
+    background-color: var(--surface-light);
+    border-radius: var(--radius-surface);
+    box-shadow: var(--shadow-sm-light);
+    padding: var(--px-12) var(--px-16);
+  }
+
+  :global(.dark) .no-posts-message {
+    background-color: var(--surface-dark);
   }
 
   @media (max-width: 50rem) {
