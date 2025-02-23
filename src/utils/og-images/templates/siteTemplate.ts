@@ -76,7 +76,7 @@ export async function generateSiteOgSvg(svgConfig: SvgConfig) {
     </div>
   </div>
   <div style="display: flex; align-items: center;">
-		<img width="608" height="312" src="https://raw.githubusercontent.com/truedaniyyel/daniel-adrian-blog/refs/heads/main/public/og-mic.png" alt="Mic" />
+		<img width="608" height="312" src="https://raw.githubusercontent.com/truedaniyyel/daniel-adrian-blog/refs/heads/main/public/og-mic.webp" alt="Mic" />
 	</div>
 </div>
 `);
