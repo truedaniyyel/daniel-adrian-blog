@@ -64,8 +64,8 @@ export async function generateSiteOgSvg(svgConfig: SvgConfig) {
           <img
             src="https://github.com/truedaniyyel.png"
             alt="Author"
-						width: 64px; 
-						height: 64px;
+						width="64" 
+						height="64"
             style="width: 64px; height: 64px; border-radius: 50%; padding: 2px;"
           />
         </div>
@@ -75,8 +75,8 @@ export async function generateSiteOgSvg(svgConfig: SvgConfig) {
       </div>
     </div>
   </div>
-  <div style="display: flex; margin-block: auto;">
-		<img src="https://github.com/truedaniyyel/daniel-adrian-blog/blob/main/public/og-mic.png" alt="Documents" />
+  <div style="display: flex; align-items: center;">
+		<img width="608" height="312" src="https://raw.githubusercontent.com/truedaniyyel/daniel-adrian-blog/refs/heads/main/public/og-mic.png" alt="Mic" />
 	</div>
 </div>
 `);
