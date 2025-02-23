@@ -1,0 +1,260 @@
+/* Base Article Typography */
+.article {
+  font-size: var(--text-lg);
+}
+
+/* Headings */
+.article :where(h2, h3, h4, h5, h6) {
+  margin: var(--px-40) 0 var(--px-24);
+  font-weight: 650;
+  line-height: var(--leading-heading);
+  scroll-margin-top: 4em;
+}
+
+.article h2 {
+  font-size: clamp(
+    var(--text-lg),
+    2vw + var(--text-lg),
+    calc(var(--text-lg) * 1.5)
+  );
+}
+
+.article h3 {
+  font-size: clamp(
+    var(--text-lg),
+    1.5vw + var(--text-lg),
+    calc(var(--text-lg) * 1.25)
+  );
+}
+
+.article :where(h4, h5, h6) {
+  font-size: clamp(
+    var(--text-lg),
+    1vw + var(--text-lg),
+    calc(var(--text-lg) * 1.1)
+  );
+}
+
+/* Text Content */
+.article p {
+  margin-bottom: var(--px-20);
+}
+
+/* Links */
+.article a {
+  color: var(--article-link);
+  transition: all 0.2s ease;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  -webkit-text-decoration-color: transparent;
+  -moz-text-decoration-color: transparent;
+}
+
+.article a:is(:hover, :focus) {
+  color: var(
+    --article-link-hover,
+    color-mix(in srgb, var(--article-link) 85%, white)
+  );
+  text-decoration-color: currentColor;
+  -webkit-text-decoration-color: currentColor;
+  -moz-text-decoration-color: currentColor;
+}
+
+.article a:active {
+  color: var(
+    --article-link-active,
+    color-mix(in srgb, var(--article-link) 75%, black)
+  );
+}
+
+.article a:visited {
+  color: var(--article-link-visited);
+}
+
+.article a:visited:is(:hover, :focus) {
+  color: var(
+    --article-link-visited-hover,
+    color-mix(in srgb, var(--article-link-visited) 85%, white)
+  );
+}
+
+.article a:visited:active {
+  color: var(
+    --article-link-visited-active,
+    color-mix(in srgb, var(--article-link-visited) 75%, black)
+  );
+}
+
+.dark .article a {
+  color: var(
+    --article-link-dark,
+    color-mix(in srgb, var(--article-link) 85%, white)
+  );
+}
+
+.dark .article a:is(:hover, :focus) {
+  color: var(
+    --article-link-hover-dark,
+    color-mix(in srgb, var(--article-link) 70%, white)
+  );
+}
+
+.dark .article a:active {
+  color: var(
+    --article-link-active-dark,
+    color-mix(in srgb, var(--article-link) 55%, white)
+  );
+}
+
+.dark .article a:visited {
+  color: var(
+    --article-link-visited-dark,
+    color-mix(in srgb, var(--article-link-visited) 85%, white)
+  );
+}
+
+.dark .article a:visited:is(:hover, :focus) {
+  color: var(
+    --article-link-visited-hover-dark,
+    color-mix(in srgb, var(--article-link-visited) 70%, white)
+  );
+}
+
+.dark .article a:visited:active {
+  color: var(
+    --article-link-visited-active-dark,
+    color-mix(in srgb, var(--article-link-visited) 55%, white)
+  );
+}
+
+/* Code Blocks */
+.article code {
+  font-size: 1em;
+  padding: 0 var(--px-4);
+}
+
+.article pre {
+  border-radius: var(--radius-on-surface);
+  padding: var(--px-16);
+  margin-bottom: var(--px-16);
+  overflow-x: auto !important;
+}
+
+/* Code Line Numbers */
+.article code {
+  counter-reset: line;
+  padding-left: 0;
+}
+
+.article span.line {
+  font-size: 1em !important;
+  line-height: normal;
+  font-family: var(--code-font) !important;
+}
+
+.article span.line:before {
+  content: counter(line);
+  counter-increment: line;
+  display: inline-block;
+  width: 1rem;
+  margin: 0 1.5rem 0 0.35rem;
+  color: rgba(255, 255, 255, 0.45);
+  direction: rtl;
+}
+
+.article span.line:last-child:is(:empty, :has(> span:empty:only-child)) {
+  display: none;
+}
+
+/* Dark Mode Code */
+.dark .article :where(.astro-code, .astro-code span) {
+  background-color: #07090f !important;
+}
+
+/* Blockquotes */
+.article blockquote {
+  margin: var(--px-16) 0;
+  padding: var(--px-12) var(--px-16);
+  border-left: var(--px-4) solid var(--text-light);
+  border-radius: var(--radius-on-surface);
+  background-color: var(--on-surface-content-light);
+  font-style: italic;
+}
+
+.dark article blockquote {
+  border-left-color: var(--text-dark);
+  background-color: var(--on-surface-content-dark);
+}
+
+.article blockquote p {
+  padding: 0;
+  margin: 0;
+}
+
+/* Lists */
+.article :where(ul, ol) {
+  padding-left: var(--px-36);
+  margin-bottom: var(--px-20);
+  list-style-position: outside;
+}
+
+.article ul {
+  list-style-type: disc;
+}
+.article ol {
+  list-style-type: decimal;
+}
+
+.article li {
+  margin-bottom: var(--px-12);
+}
+
+.article :where(ul, ol) p {
+  margin-bottom: var(--px-8);
+}
+
+.article :where(ol, ul) :where(ol, ul) {
+  padding-left: var(--px-24);
+}
+
+/* Tables */
+.article table {
+  width: 100%;
+  font-size: 1em;
+  border: 2px solid var(--on-surface-light);
+  border-radius: var(--radius-surface);
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.dark .article table {
+  border-color: var(--on-surface-dark);
+}
+
+.article :where(th, td) {
+  padding: var(--px-8);
+  text-align: left;
+}
+
+.article th {
+  background-color: var(--on-surface-light);
+}
+
+.dark .article th {
+  background-color: var(--on-surface-dark);
+}
+
+.article tr:nth-child(even) {
+  background-color: var(--on-surface-content-light);
+}
+
+.dark .article tr:nth-child(even) {
+  background-color: var(--on-surface-content-dark);
+}
+
+/* Images */
+.article img {
+  max-width: 100%;
+  margin: var(--px-16) 0;
+  border-radius: var(--radius-on-surface);
+}

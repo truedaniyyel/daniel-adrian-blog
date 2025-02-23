@@ -1,0 +1,453 @@
+---
+import uiIcons from '@assets/uiIcons';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import TOC from '@components/TOC.svelte';
+import { slugifyStr } from '@utils/slugify';
+import { formatDate } from '@utils/formatDate';
+import { readingTime } from '@utils/readingTime';
+import { posts } from '@utils/getSortedPosts';
+import ScrollToTop from '@components/ScrollToTop.svelte';
+import { type CollectionEntry, render } from 'astro:content';
+
+interface Props {
+  post: CollectionEntry<'blog'> | CollectionEntry<'projects'>;
+}
+
+const { post } = Astro.props;
+
+const { Content, headings } = await render(post);
+
+const validHeadings = headings.filter(heading => heading.depth === 2);
+
+const imageUrl =
+  typeof post.data.image === 'string' ? post.data.image : post.data.image?.src;
+
+const ogUrl = `/${post.collection}/${slugifyStr(post.data.title)}.webp`;
+
+const repoUrl = post.data?.repoUrl;
+const demoUrl = post.data?.demoUrl;
+
+const postIndex = posts.findIndex(x => x.id === post.id);
+const prevPost = posts[(postIndex + 1) % posts.length];
+const nextPost = posts[(postIndex - 1 + posts.length) % posts.length];
+
+const postLayoutProps = {
+  canonicalURL: post.data.canonicalURL,
+  title: post.data.title,
+  ogImage: ogUrl,
+  author: post.data.author,
+  pubDatetime: post.data.pubDatetime,
+  modDatetime: post.data.modDatetime,
+};
+---
+
+<BaseLayout {...postLayoutProps}>
+  <div class="post-container">
+    <nav class="main-nav">
+      <button class="btn primary-btn back-home-btn">Back home</button>
+
+      {
+        validHeadings.length > 0 && (
+          <TOC client:only="svelte" headings={validHeadings} breakpoint={700} />
+        )
+      }
+    </nav>
+    <div class="post">
+      <article class="post-article">
+        <header class="post-header">
+          <div class="post-details">
+            <div class="post-date">
+              <time
+                datetime={(
+                  post.data.modDatetime || post.data.pubDatetime
+                ).toISOString()}
+              >
+                {
+                  post.data.modDatetime
+                    ? `Upd: ${formatDate(post.data.modDatetime)}`
+                    : formatDate(post.data.pubDatetime)
+                }
+              </time>
+            </div>
+            {
+              post.body && (
+                <>
+                  <span class="divider">
+                    <Fragment set:html={uiIcons.verticalBar} />
+                  </span>
+                  <div class="post-reading-time">{readingTime(post.body)}</div>
+                </>
+              )
+            }
+          </div>
+          <h1 class="post-title">{post.data.title}</h1>
+          {
+            (repoUrl || demoUrl) && (
+              <div class="post-links">
+                {repoUrl && (
+                  <a href={repoUrl} class="repo-link">
+                    See Repository
+                  </a>
+                )}
+                {demoUrl && (
+                  <a href={demoUrl} class="demo-link">
+                    See Demo
+                  </a>
+                )}
+              </div>
+            )
+          }
+          <img
+            loading="lazy"
+            decoding="async"
+            src={imageUrl}
+            alt={post.data.title}
+            class="post-img"
+          />
+        </header>
+        <section class="article"><Content /></section>
+      </article>
+      <footer class="post-footer">
+        <nav class="post-nav" aria-label="Post navigation">
+          <!-- Previous post link -->
+          {
+            prevPost && (
+              <a
+                href={`/${prevPost.collection}/${prevPost.id}`}
+                rel="prev"
+                class="nav-link"
+              >
+                <span class="nav-icon">
+                  <Fragment set:html={uiIcons.chevron.chevronLeft} />
+                </span>
+                <div class="nav-text">
+                  <div class="nav-label">Previous</div>
+                  <div class="nav-title">{prevPost.data.title}</div>
+                </div>
+              </a>
+            )
+          }
+
+          <!-- Next post link -->
+          {
+            nextPost && (
+              <a
+                href={`/${nextPost.collection}/${nextPost.id}`}
+                rel="next"
+                class="nav-link"
+              >
+                <div class="nav-text">
+                  <div class="nav-label">Next</div>
+                  <div class="nav-title truncate-2">{nextPost.data.title}</div>
+                </div>
+                <span class="nav-icon">
+                  <Fragment set:html={uiIcons.chevron.chevronRight} />
+                </span>
+              </a>
+            )
+          }
+        </nav>
+      </footer>
+    </div>
+  </div>
+
+  <ScrollToTop client:only="svelte" />
+</BaseLayout>
+
+<style>
+  .post-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--px-18);
+    justify-content: center;
+    max-width: var(--container-2xl);
+    margin-inline: auto;
+  }
+
+  .main-nav {
+    position: sticky;
+    top: var(--px-12);
+    display: flex;
+    gap: var(--px-12);
+    padding: var(--px-10);
+    border-radius: var(--radius-surface);
+    background-color: var(--surface-light);
+    box-shadow: var(--shadow-md-light);
+    z-index: var(--z-max);
+  }
+
+  :global(.dark) .main-nav {
+    background-color: var(--surface-dark);
+    box-shadow: var(--shadow-sm-dark);
+  }
+
+  .back-home-btn {
+    padding: var(--px-12) var(--px-16);
+    border-radius: var(--radius-surface);
+    text-wrap: nowrap;
+  }
+
+  .post-article {
+    margin-bottom: var(--px-24);
+    padding: var(--px-20) var(--px-24) var(--px-24);
+    border-radius: var(--radius-surface);
+    background-color: var(--surface-light);
+    box-shadow: var(--shadow-sm-light);
+  }
+
+  :global(.dark) .post-article {
+    background-color: var(--surface-dark);
+  }
+
+  .post-details {
+    display: flex;
+    gap: var(--px-6);
+    margin-bottom: var(--px-24);
+  }
+
+  .post-title {
+    margin-bottom: var(--px-24);
+    font-size: clamp(
+      calc(var(--text-lg) * 1.75),
+      2.5vw + var(--text-lg),
+      calc(var(--text-lg) * 2.22222)
+    );
+    line-height: var(--leading-heading);
+    font-weight: 600;
+  }
+
+  .post-img {
+    border-radius: var(--radius-on-surface);
+    background-color: var(--on-surface-content-light);
+  }
+
+  :global(.dark) .post-img {
+    background-color: var(--on-surface-content-dark);
+  }
+
+  .post-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: var(--px-24);
+  }
+
+  .nav-link {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    gap: var(--px-16);
+    padding: var(--px-16) var(--px-20);
+    border-radius: var(--radius-surface);
+    background-color: var(--surface-light);
+    box-shadow: var(--shadow-sm-light);
+    transition: all var(--transition-lg);
+  }
+
+  :global(.dark) .nav-link {
+    background-color: var(--surface-dark);
+  }
+
+  .nav-link:hover {
+    box-shadow: var(--shadow-lg-light);
+  }
+
+  :global(.dark) .nav-link:hover {
+    background-color: var(--card-dark-hover);
+  }
+
+  .post-nav .nav-link:first-of-type {
+    justify-content: flex-start;
+    text-align: left;
+  }
+
+  .post-nav .nav-link:last-of-type {
+    justify-content: flex-end;
+    text-align: right;
+  }
+
+  .nav-text {
+    width: 100%;
+    height: 100%;
+  }
+
+  .nav-label {
+    margin-bottom: var(--px-8);
+  }
+
+  .nav-title {
+    font-size: var(--text-lg);
+    font-weight: 650;
+  }
+
+  .nav-icon {
+    display: flex;
+    height: var(--px-20);
+  }
+
+  @media (max-width: 64rem) {
+    .container {
+      position: relative;
+      display: flex;
+      flex-direction: column-reverse;
+    }
+
+    .post-nav {
+      flex-direction: column;
+    }
+  }
+
+  @media (max-width: 34.25rem) {
+    .main-nav {
+      position: static;
+      flex-direction: column;
+    }
+
+    .post-article {
+      padding: var(--px-12) var(--px-16) var(--px-16);
+    }
+  }
+</style>
+
+<script>
+  import uiIcons from '@assets/uiIcons';
+  import { navigate } from 'astro:transitions/client';
+
+  function setupPageElements() {
+    // Back button handling
+    document.querySelector('.back-home-btn')?.addEventListener('click', () => {
+      const previousUrl = sessionStorage.getItem('previousPageUrl') || '/';
+
+      // Check if startViewTransition exists as a function
+      if (typeof document.startViewTransition === 'function') {
+        navigate(previousUrl);
+      } else {
+        window.location.href = previousUrl;
+      }
+    });
+
+    // Handle tables
+    const tables = document.querySelectorAll('.article table');
+    tables.forEach(table => {
+      // Check if table is already wrapped
+      if (table.parentElement?.classList.contains('table-wrapper')) return;
+
+      const wrapper = document.createElement('div');
+      wrapper.className = 'table-wrapper';
+      table.parentNode?.insertBefore(wrapper, table);
+      wrapper.appendChild(table);
+    });
+
+    // Handle code blocks
+    const codeBlocks = document.querySelectorAll('.article pre');
+    codeBlocks.forEach(codeBlock => {
+      if (codeBlock.parentElement?.classList.contains('code-block-wrapper'))
+        return;
+
+      // Create wrapper
+      const wrapper = document.createElement('div');
+      wrapper.className = 'code-block-wrapper';
+
+      codeBlock.setAttribute('tabindex', '0');
+
+      // Create copy button
+      const copyButton = document.createElement('button');
+      copyButton.className = 'btn copy-button';
+      copyButton.setAttribute('aria-label', 'Copy code');
+
+      // Copy and success icons
+      copyButton.innerHTML = `<div class="icon-container">${uiIcons.copy}${uiIcons.success}</div>`;
+
+      // Wrap the code block
+      codeBlock.parentNode?.insertBefore(wrapper, codeBlock);
+      wrapper.appendChild(codeBlock);
+      wrapper.appendChild(copyButton);
+
+      // Copy functionality
+      let timeout: ReturnType<typeof setTimeout>;
+      copyButton.addEventListener('click', async () => {
+        if (timeout) clearTimeout(timeout);
+
+        const codeElement = codeBlock.querySelector('code');
+
+        if (!codeElement) return;
+
+        // Remove line numbers and copy only the code
+        const text = Array.from(codeElement.querySelectorAll('.line'))
+          .map(line => line.textContent?.replace(/^\d+\s*\|\s*/, '') || '')
+          .join('\n');
+
+        await navigator.clipboard.writeText(text);
+        copyButton.classList.add('success');
+
+        timeout = setTimeout(() => {
+          copyButton.classList.remove('success');
+        }, 1000);
+      });
+    });
+  }
+
+  document.addEventListener('astro:page-load', setupPageElements);
+</script>
+
+<style is:inline>
+  .table-wrapper {
+    width: 100%;
+    margin-block: var(--px-24);
+    font-size: var(--text-base);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .code-block-wrapper {
+    position: relative;
+    margin-bottom: var(--px-16);
+    font-size: var(--text-base);
+  }
+
+  .copy-button {
+    position: absolute;
+    top: var(--px-8);
+    right: var(--px-8);
+    width: var(--px-32);
+    height: var(--px-32);
+    padding: var(--px-4);
+    border-radius: var(--radius-on-surface);
+    background-color: var(--surface-light);
+    opacity: 0.8;
+    transition: all var(--transition-base);
+    z-index: var(--z-50);
+  }
+
+  .copy-button:hover {
+    opacity: 1;
+    background-color: var(--surface-light);
+  }
+
+  .copy-button .icon-container {
+    position: relative;
+    width: var(--px-18);
+    height: var(--px-18);
+  }
+
+  .copy-button svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: var(--text-light);
+    transform: translate(-50%, -50%);
+    transition: all var(--transition-base);
+  }
+
+  .copy-button .success-icon {
+    opacity: 0;
+  }
+
+  .copy-button.success .copy-icon {
+    opacity: 0;
+  }
+
+  .copy-button.success .success-icon {
+    opacity: 1;
+  }
+</style>

@@ -1,0 +1,88 @@
+.onopen-animation {
+  display: block !important;
+  animation: dropdownFade var(--transition-base);
+}
+
+.dropdown-fade {
+  animation: dropdownFade var(--transition-base);
+}
+
+@keyframes dropdownFade {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.onopen-chevron {
+  animation: bounceRotate var(--transition-sm) forwards;
+}
+
+@keyframes bounceRotate {
+  0% {
+    transform: rotate(180deg);
+  }
+  50% {
+    transform: rotate(90deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.modal-fade {
+  animation: modalFade var(--transition-base);
+}
+
+@keyframes modalFade {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -10px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+.spinner {
+  width: var(--px-40);
+  height: var(--px-40);
+  border: var(--px-6) solid var(--scrollbar-thumb);
+  border-top-color: var(--text-light);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.dark .spinner {
+  border-color: var(--on-surface-dark);
+  border-top-color: var(--text-dark);
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

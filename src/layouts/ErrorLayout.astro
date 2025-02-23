@@ -1,0 +1,126 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { SOCIALS } from '@consts';
+import socialIcons from '@assets/socialIcons';
+
+interface Props {
+  title: string;
+  description: string;
+  errorCode: string;
+  errorMessage: string;
+  errorDescription: string;
+}
+
+const { title, description, errorCode, errorMessage, errorDescription } =
+  Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+  <main>
+    <section class="error-container">
+      <h1>{errorCode}</h1>
+      <h2>{errorMessage}</h2>
+      <p class="error-description">{errorDescription}</p>
+
+      <!-- Helpful Links -->
+      <div class="helpful-links">
+        <a class="btn primary-btn back-home-btn" href="/">Go to homepage</a>
+
+        <p>Contact me</p>
+        <ul class="social-links">
+          {
+            SOCIALS.map(social => (
+              <li class="social-link">
+                <a
+                  href={social.HREF}
+                  aria-label={social.LABEL}
+                  class="social-link-icon"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Fragment set:html={socialIcons[social.ICON]} />
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <slot />
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  body {
+    margin: 0;
+  }
+
+  main {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .error-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: var(--px-40);
+    text-align: center;
+    background-color: var(--surface-light);
+    border-radius: var(--radius-surface);
+  }
+
+  :global(.dark) .error-container {
+    background-color: var(--surface-dark);
+  }
+
+  .error-container h1 {
+    font-size: clamp(var(--text-5xl), 10vw, var(--text-6xl));
+    font-weight: 500;
+    margin-bottom: var(--px-16);
+  }
+
+  .error-container h2 {
+    font-size: clamp(var(--text-2xl), 4.5vw, var(--text-3xl));
+    margin-bottom: var(--px-16);
+  }
+
+  .error-description {
+    font-size: var(--text-lg);
+    max-width: var(--w-error);
+  }
+
+  .helpful-links {
+    margin-top: var(--px-32);
+  }
+
+  .back-home-btn {
+    min-width: 100%;
+    padding: var(--px-12);
+    margin-bottom: var(--px-48);
+    border-radius: var(--radius-on-surface);
+  }
+
+  .social-links {
+    display: flex;
+    justify-content: center;
+    gap: var(--px-16);
+    margin-top: var(--px-16);
+    padding: 0;
+  }
+
+  @media (max-width: 34.25rem) {
+    .error-container {
+      padding: var(--px-32);
+    }
+  }
+
+  @media (max-width: 24.125rem) {
+    .error-container {
+      padding: var(--px-24);
+    }
+  }
+</style>

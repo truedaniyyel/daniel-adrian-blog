@@ -1,0 +1,231 @@
+/* Base styles */
+html {
+  color: var(--text-light);
+  background-color: var(--bg-light);
+}
+
+html.dark {
+  color: var(--text-dark);
+  background-image: var(--bg-dark);
+}
+
+body {
+  margin-block: var(--px-24);
+  padding-inline: var(--px-24);
+}
+
+main {
+  position: relative;
+  margin-inline: auto;
+  max-width: var(--container-2xl);
+}
+
+/* Utility classes */
+.truncate-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+}
+
+.toc-max-h {
+  max-height: calc(var(--h-toc) - 5rem);
+}
+
+/* Mark styles */
+mark {
+  background-color: var(--search-mark-light);
+  color: inherit;
+}
+
+.dark mark {
+  background-color: var(--search-mark-dark);
+}
+
+/* Common button styles */
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/* Link styles */
+.other-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--px-6);
+}
+
+.other-links a {
+  transition: box-shadow 0.2s ease;
+  color: var(--text-1);
+}
+
+.other-links a:hover {
+  box-shadow: 0 var(--px-1) 0 0 currentColor;
+}
+
+/* Social link styles */
+.social-link-icon {
+  display: flex;
+  width: var(--px-40);
+  height: var(--px-40);
+  justify-content: center;
+  padding: var(--px-8);
+  background-color: var(--on-surface-light);
+  border-radius: var(--radius-on-surface);
+  transition: all 0.2s ease;
+}
+
+.dark .social-link-icon {
+  background-color: var(--on-surface-dark);
+}
+
+.social-link-icon:hover {
+  transform: translateY(-2px);
+  opacity: 0.8;
+}
+
+.dark .social-link-icon:hover {
+  background-color: var(--on-surface-dark-hover);
+  opacity: 1;
+}
+
+.social-link-icon:active,
+.dark .social-link-icon:active {
+  transform: translateY(0);
+}
+
+.social-link-icon:active {
+  background-color: var(--on-surface-dark);
+  color: var(--text-dark);
+}
+
+.dark .social-link-icon:active {
+  background-color: var(--on-surface-light);
+  color: var(--text-light);
+}
+
+/* Navigation links */
+.nav-link,
+.nav-link-search {
+  padding-inline: var(--px-16);
+}
+
+.nav-link-search {
+  width: 100%;
+}
+
+.nav-link {
+  padding-block: var(--px-12);
+  border-radius: var(--radius-on-surface);
+  transition: all 0.2s ease;
+}
+
+.nav-link:hover,
+.btn-active {
+  background-color: var(--on-surface-content-light);
+}
+
+.dark .nav-link:hover,
+.dark .btn-active {
+  background-color: var(--on-surface-content-dark);
+}
+
+.nav-link:active {
+  background-color: var(--on-surface-content-dark);
+  color: var(--text-dark);
+}
+
+.dark .nav-link:active {
+  background-color: var(--on-surface-content-light);
+  color: var(--text-light);
+}
+
+/* Primary button */
+.primary-btn {
+  color: var(--text-dark);
+  background-color: var(--surface-dark);
+  transition: all 0.2s ease;
+}
+
+.dark .primary-btn {
+  color: var(--text-light);
+  background-color: var(--surface-light);
+}
+
+.primary-btn:hover {
+  opacity: 0.85;
+}
+
+.primary-btn:active {
+  opacity: 0.7;
+}
+
+/* Modal styles */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--overlay-light);
+  z-index: var(--z-999);
+}
+
+.dark .modal-overlay {
+  background-color: var(--overlay-dark);
+}
+
+.modal-btn {
+  padding: var(--px-8) var(--px-16);
+  border-radius: var(--radius-surface);
+  background-color: var(--surface-light);
+  transition: all 0.2s ease;
+}
+
+.dark .modal-btn {
+  background-color: var(--surface-dark);
+}
+
+.modal-btn:hover {
+  opacity: 0.85;
+}
+
+.dark .modal-btn:hover {
+  background-color: var(--modal-btn-dark);
+  opacity: 1;
+}
+
+.modal-btn:active {
+  background-color: var(--surface-dark);
+  color: var(--text-dark);
+  opacity: 1;
+}
+
+.dark .modal-btn:active {
+  background-color: var(--surface-light);
+  color: var(--text-light);
+}
+
+/* Media queries */
+@media (max-width: 34.25rem) {
+  body {
+    margin-block: var(--px-16);
+    padding-inline: var(--px-16);
+  }
+
+  .nav-link,
+  .nav-link-search {
+    padding-inline: var(--px-10);
+  }
+}
+
+@media (max-width: 24.125rem) {
+  body {
+    margin-block: var(--px-10);
+    padding-inline: var(--px-10);
+  }
+}

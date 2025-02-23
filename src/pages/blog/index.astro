@@ -1,0 +1,9 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import App from '@components/App.svelte';
+import { blog } from '@utils/getSortedPosts';
+---
+
+<BaseLayout>
+  <App client:only="svelte" posts={blog} />
+</BaseLayout>

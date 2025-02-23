@@ -1,0 +1,136 @@
+---
+import '@styles/variables.css';
+import '@styles/preflight.css';
+import '@styles/global.css';
+import '@styles/markdown.css';
+import '@styles/animations.css';
+import { SITE } from '@consts';
+import { ClientRouter } from 'astro:transitions';
+
+const googleSiteVerification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION;
+
+const {
+  canonicalURL = new URL(Astro.url.pathname, Astro.site).href,
+  title = SITE.TITLE,
+  description = SITE.DESCRIPTION,
+  ogImage = SITE.OG_IMAGE,
+  author = SITE.AUTHOR,
+  pubDatetime,
+  modDatetime,
+} = Astro.props;
+
+const socialImageURL = new URL(
+  ogImage ?? SITE.OG_IMAGE ?? 'og-image.webp',
+  Astro.url.origin
+).href;
+
+const schemaData = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: `${title}`,
+  image: `${socialImageURL}`,
+  ...(pubDatetime && {
+    datePublished: new Date(pubDatetime).toISOString(),
+  }),
+  ...(modDatetime && { dateModified: modDatetime.toISOString() }),
+  author: [
+    {
+      '@type': 'Person',
+      name: `${author}`,
+      url: `${canonicalURL}`,
+    },
+  ],
+};
+---
+
+<!doctype html>
+<html lang=`${SITE.LOCALE ?? "en"}`>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonicalURL} />
+    <meta name="generator" content={Astro.generator} />
+
+    <ClientRouter />
+
+    <!-- General Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="author" content={author} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={socialImageURL} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content={SITE.TWITTER?.CARD} />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={socialImageURL} />
+
+    <!-- Google JSON-LD Structured data -->
+    <script type="application/ld+json" set:html={JSON.stringify(schemaData)} />
+
+    <!-- Theme mode -->
+    <script is:inline>
+      function applyTheme() {
+        const systemPrefersDark = window.matchMedia(
+          '(prefers-color-scheme: dark)'
+        ).matches;
+        const currentTheme = localStorage.getItem('theme');
+
+        if (!currentTheme) {
+          localStorage.setItem('theme', systemPrefersDark ? 'dark' : 'light');
+        }
+
+        document.documentElement.classList.toggle(
+          'dark',
+          localStorage.getItem('theme') === 'dark'
+        );
+      }
+
+      applyTheme();
+
+      document.addEventListener('astro:after-swap', applyTheme);
+    </script>
+
+    <!-- Previous URL handling -->
+    <script is:inline>
+      if (
+        !window.location.pathname.includes('/blog/') &&
+        !window.location.pathname.includes('/projects/')
+      ) {
+        sessionStorage.setItem('previousPageUrl', window.location.href);
+      }
+    </script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
+      rel="stylesheet"
+    />
+
+    {
+      // If PUBLIC_GOOGLE_SITE_VERIFICATION is set in the environment variable,
+      // include google-site-verification tag in the heading
+      // Learn more: https://support.google.com/webmasters/answer/9008080#meta_tag_verification&zippy=%2Chtml-tag
+      googleSiteVerification && (
+        <meta
+          name="google-site-verification"
+          content={googleSiteVerification}
+        />
+      )
+    }
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
