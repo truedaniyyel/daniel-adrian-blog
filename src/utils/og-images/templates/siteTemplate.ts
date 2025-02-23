@@ -50,7 +50,7 @@ export async function generateSiteOgSvg(svgConfig: SvgConfig) {
   </div>
 
   <div
-    style="max-width: 50%; display: flex; flex-direction: column; justify-content: center;"
+    style="max-width: 45%; display: flex; flex-direction: column; justify-content: center;"
   >
     <div style="display: flex; flex-direction: column;">
       <h1 style="font-size: 54px; font-weight: 900; line-height: 1.4;">
@@ -76,7 +76,7 @@ export async function generateSiteOgSvg(svgConfig: SvgConfig) {
     </div>
   </div>
   <div style="display: flex; align-items: center;">
-		<img width="608" height="312" src="https://raw.githubusercontent.com/truedaniyyel/daniel-adrian-blog/refs/heads/main/public/og-mic.webp" alt="Mic" />
+		<img width="608" height="312" src="https://raw.githubusercontent.com/truedaniyyel/daniel-adrian-blog/refs/heads/main/public/og-mic.png" alt="Mic" />
 	</div>
 </div>
 `);
