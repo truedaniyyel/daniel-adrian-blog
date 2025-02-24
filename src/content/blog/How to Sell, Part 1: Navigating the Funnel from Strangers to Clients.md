@@ -127,8 +127,8 @@ Timing and the overall vibe are everything. Lead your audience through a well-pl
 
 ## References & Further Reading
 
-1. **Cialdini, R. (2006). Influence: The Psychology of Persuasion.** Harper Business.
-2. **Kotler, P., & Armstrong, G. (2021). Principles of Marketing.** Pearson.
-3. “Top of Funnel vs. Bottom of Funnel: Which One Deserves More Budget?” Forbes Marketing Council article, 2022.
+1. Cialdini, R. (2006). Influence: The Psychology of Persuasion.
+2. Kotler, P., & Armstrong, G. (2021). Principles of Marketing.
+3. “How Marketers Allocate Their Spend Across The Sales Funnel” Forbes Marketing Council article, 2022.
 
 Feel free to explore these materials to dive deeper into consumer psychology and marketing fundamentals.

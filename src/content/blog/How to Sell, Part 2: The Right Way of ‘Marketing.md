@@ -32,20 +32,20 @@ Think of it as **collaborative cooking:** Instead of guessing your dinner guests
 
 The beauty of today’s internet is that your market already exists in corners of social media like Twitter, YouTube, Facebook Groups, etc., or specialized forums. Here’s how to tap into that:
 
-1. Find Traffic Hotspots
+1. **Find Traffic Hotspots**
 
    - Identify popular groups or pages filled with people who match your ideal customer profile.
 
-2. Observe, Don’t Pounce
+2. **Observe, Don’t Pounce**
 
    - Before you blurt out a sales pitch, watch how people interact. What do they complain about? What sparks heated debate?
 
-3. Join Discussions
+3. **Join Discussions**
 
    - Ask open-ended questions: “Has anyone tried cold messaging? What were your results?”
    - Share your viewpoint, but don’t shove it down people’s throats.
 
-4. Document Pain Points
+4. **Document Pain Points**
 
    - Keep a running list of the problems, obstacles, and frustrations they mention.
    - Divide them into main and sub-ideas, then think about how your solution addresses each.
@@ -54,17 +54,17 @@ The beauty of today’s internet is that your market already exists in corners o
 
 After gathering enough insights, it’s time to co-create your offers:
 
-1. Refine, Don’t Rush
+1. **Refine, Don’t Rush**
 
    - Draft a proposal or product concept.
    - Check if it truly addresses the pains you’ve heard.
 
-2. Post Follow-Up Content
+2. **Post Follow-Up Content**
 
    - Summarize your findings: “Last week, many of you mentioned struggling with lead generation. Here’s a quick guide I put together…”
    - Ask for feedback. Tag people who contributed good insights.
 
-3. Introduce Solutions Softly
+3. **Introduce Solutions Softly**
 
    - If your new service or product is relevant, mention it. “By the way, I’m testing a tool that automates email outreach — would love some beta testers!”
    - If the market resonates, you’ll know: people will sign up, comment, or message you.
@@ -115,8 +115,7 @@ Before long, you’ll have a community that trusts you, a suite of offers that p
 
 ## Want to Dive Deeper?
 
-- Cialdini, R. (2006). Influence: The Psychology of Persuasion. Harper Business.
-- Kotler, P. & Keller, K. L. (2016). Marketing Management. Pearson.
-- “How to Co-Create Products with Customers.” Harvard Business Review (2019).
+- “The Age of Continuous Connection” Harvard Business Review (2019).
+- “How to Create Products That Grow with Their Users” Harvard Business Review (2024).
 
 Don’t just read — observe how these experts actually engage with their audiences.

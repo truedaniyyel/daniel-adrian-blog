@@ -59,11 +59,12 @@ mark {
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 6px;
   margin-bottom: var(--px-6);
 }
 
 .other-links a {
-  transition: box-shadow 0.2s ease;
+  transition: box-shadow var(--transition-base);
   color: var(--text-1);
 }
 
@@ -80,7 +81,7 @@ mark {
   padding: var(--px-8);
   background-color: var(--on-surface-light);
   border-radius: var(--radius-on-surface);
-  transition: all 0.2s ease;
+  transition: all var(--transition-base);
 }
 
 .dark .social-link-icon {
@@ -125,7 +126,7 @@ mark {
 .nav-link {
   padding-block: var(--px-12);
   border-radius: var(--radius-on-surface);
-  transition: all 0.2s ease;
+  transition: all var(--transition-base);
 }
 
 .nav-link:hover,
@@ -152,7 +153,7 @@ mark {
 .primary-btn {
   color: var(--text-dark);
   background-color: var(--surface-dark);
-  transition: all 0.2s ease;
+  transition: all var(--transition-base);
 }
 
 .dark .primary-btn {
@@ -186,7 +187,7 @@ mark {
   padding: var(--px-8) var(--px-16);
   border-radius: var(--radius-surface);
   background-color: var(--surface-light);
-  transition: all 0.2s ease;
+  transition: all var(--transition-base);
 }
 
 .dark .modal-btn {
@@ -211,15 +212,6 @@ mark {
 .dark .modal-btn:active {
   background-color: var(--surface-light);
   color: var(--text-light);
-}
-
-.post-img {
-  border-radius: var(--radius-on-surface);
-  background-color: var(--on-surface-content-light);
-}
-
-:global(.dark) .post-img {
-  background-color: var(--on-surface-content-dark);
 }
 
 /* Media queries */

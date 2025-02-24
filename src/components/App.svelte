@@ -75,7 +75,7 @@
       <div
         role="navigation"
         aria-label="Site menu"
-        class={['nav-links dropdown-fade', { 'menu-open': isMenuOpen }]}
+        class={['nav-links', { 'menu-open': isMenuOpen }]}
       >
         <a class="nav-link" href="/blog">Blog</a>
         <a class="nav-link" href="/projects">Projects</a>
@@ -100,6 +100,8 @@
             {/each}
           </ul>
           <div class="other-links">
+            <a href="/rss.xml">RSS</a>
+            {@html uiIcons.verticalBar}
             <a href="/sitemap-index.xml">SiteMap</a>
           </div>
         </div>
@@ -231,6 +233,7 @@
       background-color: var(--surface-light);
       font-size: var(--text-lg);
       font-weight: 450;
+      animation: dropdownFade var(--transition-base);
     }
 
     :global(.dark) .nav-links {

@@ -52,6 +52,8 @@
       {/each}
     </ul>
     <div class="other-links">
+      <a href="/rss.xml">RSS</a>
+      {@html uiIcons.verticalBar}
       <a href="/sitemap-index.xml">SiteMap</a>
     </div>
   </div>

@@ -107,6 +107,47 @@
     width: 100%;
     gap: var(--px-8);
     padding: var(--px-12) var(--px-18);
+    transition: all var(--transition-lg);
+  }
+
+  .toc-toggle:hover {
+    background-color: color-mix(in srgb, var(--on-surface-light) 92%, black);
+  }
+
+  :global(.dark) .toc-toggle:hover {
+    background-color: var(--on-surface-dark-hover);
+  }
+
+  .toc-wrapper.open .toc-toggle:hover {
+    background-color: var(--surface-light);
+    opacity: 0.85;
+  }
+
+  :global(.dark) .toc-wrapper.open .toc-toggle:hover {
+    background-color: var(--modal-btn-dark);
+    opacity: 1;
+  }
+
+  .toc-toggle:active {
+    background-color: var(--surface-dark);
+    color: var(--text-dark);
+  }
+
+  :global(.dark) .toc-toggle:active {
+    background-color: var(--on-surface-light);
+    color: var(--text-light);
+  }
+
+  .toc-wrapper.open .toc-toggle:active {
+    background-color: var(--surface-dark);
+    color: var(--text-dark);
+    opacity: 1;
+  }
+
+  :global(.dark) .toc-wrapper.open .toc-toggle:active {
+    background-color: var(--surface-light);
+    color: var(--text-light);
+    opacity: 1;
   }
 
   .toggle-icon {

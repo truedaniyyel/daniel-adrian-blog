@@ -50,6 +50,8 @@
       <img
         loading="lazy"
         decoding="async"
+        width="250"
+        height="240"
         src={typeof post.data.image === 'string'
           ? post.data.image
           : post.data.image.src}
@@ -84,14 +86,23 @@
     background-color: var(--surface-dark);
   }
 
-  .card:hover,
-  .card:active {
+  .card:hover {
     box-shadow: var(--shadow-lg-light);
   }
 
   :global(.dark) .card:hover,
   :global(.dark) .card:active {
     background-color: var(--card-dark-hover);
+  }
+
+  .card:active {
+    background-color: var(--surface-dark);
+    color: var(--text-dark);
+  }
+
+  :global(.dark) .card:active {
+    background-color: var(--surface-light);
+    color: var(--text-light);
   }
 
   .card-content {
@@ -165,6 +176,32 @@
     width: var(--px-16);
   }
 
+  .card-tag,
+  .card-img,
+  .card-arrow {
+    transition: background-color var(--transition-lg);
+  }
+
+  .card:active .card-tag {
+    color: var(--text-dark);
+  }
+
+  .card:active .card-tag,
+  .card:active .card-img,
+  .card:active .card-arrow {
+    background-color: var(--on-surface-dark);
+  }
+
+  :global(.dark) .card:active .card-tag {
+    color: var(--text-light);
+  }
+
+  :global(.dark) .card:active .card-tag,
+  :global(.dark) .card:active .card-img,
+  :global(.dark) .card:active .card-arrow {
+    background-color: var(--on-surface-light);
+  }
+
   :global(.dark) .card-tag,
   :global(.dark) .card-img,
   :global(.dark) .card-img:not([loaded]),
@@ -183,7 +220,7 @@
     }
 
     .card-img {
-      max-width: 100%;
+      min-width: 100%;
     }
 
     .card-arrow {

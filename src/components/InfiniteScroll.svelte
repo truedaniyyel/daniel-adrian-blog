@@ -1,5 +1,6 @@
 <script lang="ts">
   import Card from '@components/Card.svelte';
+  import { onMount } from 'svelte';
   import type { Post } from '@components/types';
 
   interface Props {
@@ -15,6 +16,7 @@
   let visiblePosts = $derived(posts.slice(0, displayCount));
   let isLoading = $state(false);
   let sentinel: HTMLDivElement | null = $state(null);
+  let mounted = $state(false);
 
   function createObserver() {
     const observer = new IntersectionObserver(
@@ -51,6 +53,10 @@
     }
   }
 
+  onMount(() => {
+    mounted = true;
+  });
+
   $effect(() => {
     if (!sentinel) return;
 
@@ -58,7 +64,7 @@
   });
 </script>
 
-<section aria-label="List of posts">
+<section class={[mounted]} aria-label="List of posts">
   <ul class="cards">
     {#each visiblePosts as post (post.id)}
       <li>
@@ -86,7 +92,7 @@
     margin-bottom: var(--px-36);
   }
 
-  li {
+  .mounted .cards li {
     animation: fadeIn 0.3s ease-in;
   }
   @keyframes fadeIn {

@@ -42,7 +42,7 @@
     class="btn primary-btn"
     onclick={scrollToTop}
     aria-label="Scroll to the top"
-    transition:fade={{ duration: 200 }}
+    transition:fade={{ duration: 150 }}
   >
     {@html uiIcons.goUp}
   </button>
