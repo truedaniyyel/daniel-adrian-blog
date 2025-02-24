@@ -1,6 +1,7 @@
 ---
 import uiIcons from '@assets/uiIcons';
 import BaseLayout from '@layouts/BaseLayout.astro';
+import Images from '@components/Images.astro';
 import TOC from '@components/TOC.svelte';
 import { formatDate } from '@utils/formatDate';
 import { readingTime } from '@utils/readingTime';
@@ -19,7 +20,9 @@ const { Content, headings } = await render(post);
 const validHeadings = headings.filter(heading => heading.depth === 2);
 
 const imageUrl =
-  typeof post.data.image === 'string' ? post.data.image : post.data.image?.src;
+  typeof post.data.image === 'string'
+    ? post.data.image
+    : post.data.image?.src || '';
 
 const ogUrl = `/${post.collection}/${post.id}.webp`;
 
@@ -97,13 +100,17 @@ const postLayoutProps = {
               </div>
             )
           }
-          <img
-            loading="lazy"
-            decoding="async"
-            src={imageUrl}
-            alt={post.data.title}
-            class="post-img"
-          />
+          {
+            imageUrl && (
+              <img
+                loading="lazy"
+                decoding="async"
+                src={imageUrl}
+                alt={post.data.title}
+                class="post-img"
+              />
+            )
+          }
         </header>
         <section class="article"><Content /></section>
       </article>
@@ -214,15 +221,6 @@ const postLayoutProps = {
     );
     line-height: var(--leading-heading);
     font-weight: 600;
-  }
-
-  .post-img {
-    border-radius: var(--radius-on-surface);
-    background-color: var(--on-surface-content-light);
-  }
-
-  :global(.dark) .post-img {
-    background-color: var(--on-surface-content-dark);
   }
 
   .post-nav {

@@ -30,7 +30,7 @@ Think of it as **collaborative cooking:** Instead of guessing your dinner guests
 
 ## Getting into the Conversation
 
-The beauty of today’s internet is that your market already exists in corners of social media like Twitter, Pornhub, Facebook Groups, etc., or specialized forums. Here’s how to tap into that:
+The beauty of today’s internet is that your market already exists in corners of social media like Twitter, YouTube, Facebook Groups, etc., or specialized forums. Here’s how to tap into that:
 
 1. Find Traffic Hotspots
 

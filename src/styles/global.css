@@ -213,6 +213,15 @@ mark {
   color: var(--text-light);
 }
 
+.post-img {
+  border-radius: var(--radius-on-surface);
+  background-color: var(--on-surface-content-light);
+}
+
+:global(.dark) .post-img {
+  background-color: var(--on-surface-content-dark);
+}
+
 /* Media queries */
 @media (max-width: 34.25rem) {
   body {
