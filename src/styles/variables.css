@@ -43,6 +43,11 @@
   --on-surface-content-light: #e4e4e7;
   --on-surface-content-dark: #3f3f4d;
   --modal-btn-dark: #31313c;
+  --modal-btn-on-surface-light-hover: color-mix(
+    in srgb,
+    var(--on-surface-light) 92%,
+    black
+  );
 
   /* Card */
   --card-dark-hover: color-mix(in srgb, var(--surface-dark) 97%, white);

@@ -95,7 +95,7 @@
 
   .tag-btn:hover {
     transform: translateY(-2px);
-    background-color: color-mix(in srgb, var(--on-surface-light) 92%, black);
+    background-color: var(--modal-btn-on-surface-light-hover);
   }
 
   :global(.dark) .tag-btn:hover {

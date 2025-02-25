@@ -111,10 +111,11 @@
   }
 
   .toc-toggle:hover {
-    background-color: color-mix(in srgb, var(--on-surface-light) 92%, black);
+    background-color: var(--modal-btn-on-surface-light-hover);
   }
 
-  :global(.dark) .toc-toggle:hover {
+  :global(.dark) .toc-toggle:hover,
+  :global(.dark) .item-link:hover {
     background-color: var(--on-surface-dark-hover);
   }
 
@@ -128,12 +129,14 @@
     opacity: 1;
   }
 
-  .toc-toggle:active {
-    background-color: var(--surface-dark);
+  .toc-toggle:active,
+  .item-link:active {
+    background-color: var(--on-surface-dark);
     color: var(--text-dark);
   }
 
-  :global(.dark) .toc-toggle:active {
+  :global(.dark) .toc-toggle:active,
+  :global(.dark) .item-link:active {
     background-color: var(--on-surface-light);
     color: var(--text-light);
   }
@@ -179,6 +182,12 @@
   }
 
   .item-link {
-    padding: var(--px-6) var(--px-12);
+    padding: var(--px-8) var(--px-16);
+    border-radius: var(--radius-on-surface);
+    transition: background-color var(--transition-lg);
+  }
+
+  .item-link:hover {
+    background-color: var(--on-surface-light-hover);
   }
 </style>

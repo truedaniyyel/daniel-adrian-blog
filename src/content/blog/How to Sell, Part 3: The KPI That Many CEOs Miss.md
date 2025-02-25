@@ -3,7 +3,7 @@ title: 'How to Sell, Part 3: The KPI That Many CEOs Miss'
 pubDatetime: 2025-01-30
 description: 'Deals expire — trust and loyalty don’t.'
 author: 'Daniel Adrian'
-image: 'https://docs.astro.build/assets/rose.webp'
+image: 'https://ik.imagekit.io/truedaniyyel/how-to-sell-part-3-the-kpi-that-many-ceos-miss.webp?updatedAt=1740524354109'
 tags: ['client retention']
 ---
 

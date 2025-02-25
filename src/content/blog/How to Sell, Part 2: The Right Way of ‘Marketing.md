@@ -3,7 +3,7 @@ title: 'How to Sell, Part 2: The Right Way of ‘Marketing’'
 pubDatetime: 2025-01-29
 description: 'I’m not here to sell. I’m here to meet needs. The market asks, I deliver.'
 author: 'Daniel Adrian'
-
+image: 'https://ik.imagekit.io/truedaniyyel/how-to-sell-part-2-the-right-way-of-marketing.webp?updatedAt=1740521429463'
 tags: ['audience engagement']
 ---
 
