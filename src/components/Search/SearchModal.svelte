@@ -1,7 +1,7 @@
 <script lang="ts">
   import uiIcons from '@assets/uiIcons';
-  import { debounce } from '@utils/debounce';
   import Modal from '@components/Modal/Modal.svelte';
+  import { debounce } from '@utils/debounce';
   import { onMount } from 'svelte';
 
   import type { SearchItem } from '@utils/search/types';

@@ -93,15 +93,18 @@
     background-color: var(--on-surface-dark);
   }
 
-  .tag-btn:hover,
-  .tag-btn:active {
+  .tag-btn:hover {
     transform: translateY(-2px);
     background-color: color-mix(in srgb, var(--on-surface-light) 92%, black);
   }
 
-  :global(.dark) .tag-btn:hover,
-  :global(.dark) .tag-btn:active {
+  :global(.dark) .tag-btn:hover {
     background-color: var(--on-surface-dark-hover);
+  }
+
+  .tag-btn:active {
+    transform: translateY(0);
+    transform: scale(0.95);
   }
 
   .tag-active-btn {
@@ -114,13 +117,11 @@
     background-color: var(--on-surface-light);
   }
 
-  .tag-active-btn:hover,
-  .tag-active-btn:active {
+  .tag-active-btn:hover {
     background-color: var(--on-surface-dark-hover);
   }
 
-  :global(.dark) .tag-active-btn:hover,
-  :global(.dark) .tag-active-btn:active {
+  :global(.dark) .tag-active-btn:hover {
     background-color: var(--on-surface-light-hover);
     opacity: 0.85;
   }

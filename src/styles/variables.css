@@ -143,6 +143,7 @@
   /* Height */
   --h-modal: calc(68vh - 3.813rem);
   --h-card: 14.5rem; /* 232px */
+  --h-card-img: 15rem; /* 240px */
   --h-toc: 80vh;
 
   /* z-index */

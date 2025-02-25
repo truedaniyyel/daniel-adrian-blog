@@ -152,6 +152,7 @@
 
   .card-img {
     max-width: var(--w-card-img);
+    height: var(--h-card-img);
     object-fit: cover;
     border-radius: var(--radius-on-surface);
     background-color: var(--on-surface-light);
@@ -159,7 +160,6 @@
   }
 
   .card-img:not([loaded]) {
-    background-color: var(--on-surface-light);
     opacity: 0.5;
   }
 
@@ -182,6 +182,12 @@
     transition: background-color var(--transition-lg);
   }
 
+  :global(.dark) .card-tag,
+  :global(.dark) .card-img,
+  :global(.dark) .card-arrow {
+    background-color: var(--on-surface-dark);
+  }
+
   .card:active .card-tag {
     color: var(--text-dark);
   }
@@ -200,13 +206,6 @@
   :global(.dark) .card:active .card-img,
   :global(.dark) .card:active .card-arrow {
     background-color: var(--on-surface-light);
-  }
-
-  :global(.dark) .card-tag,
-  :global(.dark) .card-img,
-  :global(.dark) .card-img:not([loaded]),
-  :global(.dark) .card-arrow {
-    background-color: var(--on-surface-dark);
   }
 
   @media (max-width: 42.188rem) {

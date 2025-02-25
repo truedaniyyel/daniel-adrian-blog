@@ -110,7 +110,9 @@
   </header>
 
   {#if filteredPosts.length === 0}
-    <p class="no-posts-message">No posts available.</p>
+    <div class="no-posts-message">
+      <p>Nothing here yet.</p>
+    </div>
   {:else}
     <InfiniteScroll posts={filteredPosts} itemsPerLoad={6} />
   {/if}
