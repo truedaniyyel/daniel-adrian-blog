@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.19.0",
+    "@kindspells/astro-shield": "^1.7.1",
     "@types/lodash.kebabcase": "^4.1.9",
     "eslint": "^9.19.0",
     "eslint-config-prettier": "^10.0.1",

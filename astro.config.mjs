@@ -2,14 +2,23 @@
 import { defineConfig } from 'astro/config';
 import { SITE } from './src/consts';
 import sitemap from '@astrojs/sitemap';
-
 import svelte from '@astrojs/svelte';
+import { shield } from '@kindspells/astro-shield';
+import { resolve } from 'node:path';
 
-// https://astro.build/config
+const rootDir = new URL('.', import.meta.url).pathname;
+const modulePath = resolve(rootDir, 'src', 'generated', 'sriHashes.mjs');
+
 export default defineConfig({
   site: SITE.CANONICAL_URL,
   output: 'static',
-  integrations: [sitemap(), svelte()],
+  integrations: [
+    sitemap(),
+    svelte(),
+    shield({
+      sri: { hashesModule: modulePath },
+    }),
+  ],
   markdown: {
     shikiConfig: {
       theme: 'andromeeda',
