@@ -12,11 +12,11 @@ async function generateCSPHeader() {
 
     // Generate CSP header
     const cspHeader =
-      `Content-Security-Policy: default-src 'self'; object-src 'self'; script-src 'self' 'wasm-unsafe-eval' https://track.example.com ${Array.from(
+      `Content-Security-Policy: default-src 'self'; object-src 'self'; script-src 'self' ${Array.from(
         scriptHashes
       )
         .map(hash => `'${hash}'`)
-        .join(' ')}; connect-src 'self' https://track.example.com; style-src 'self' ${Array.from(
+        .join(' ')}; connect-src 'self'; style-src 'self' ${Array.from(
         styleHashes
       )
         .map(hash => `'${hash}'`)

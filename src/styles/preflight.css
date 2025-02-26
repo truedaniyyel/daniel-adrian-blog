@@ -31,16 +31,8 @@ html,
   line-height: var(--leading-body); /* 1 */
   -webkit-text-size-adjust: 100%; /* 2 */
   tab-size: 4; /* 3 */
-  font-family: var(
-    --font-primary,
-    ui-sans-serif,
-    system-ui,
-    sans-serif,
-    'Apple Color Emoji',
-    'Segoe UI Emoji',
-    'Segoe UI Symbol',
-    'Noto Color Emoji'
-  ); /* 4 */
+  font-family: var(--font-primary), ui-sans-serif, system-ui, sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'; /* 4 */
   font-feature-settings: var(--default-font-feature-settings, normal); /* 5 */
   font-variation-settings: var(
     --default-font-variation-settings,
@@ -124,17 +116,8 @@ code,
 kbd,
 samp,
 pre {
-  font-family: var(
-    --font-mono,
-    ui-monospace,
-    SFMono-Regular,
-    Menlo,
-    Monaco,
-    Consolas,
-    'Liberation Mono',
-    'Courier New',
-    monospace
-  ); /* 1 */
+  font-family: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, Monaco,
+    Consolas, 'Liberation Mono', 'Courier New', monospace; /* 1 */
   font-feature-settings: var(
     --default-mono-font-feature-settings,
     normal
