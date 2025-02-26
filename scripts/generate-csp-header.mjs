@@ -1,6 +1,6 @@
 import fs from 'fs/promises';
 import path from 'path';
-import { perResourceSriHashes } from '../src/generated/sriHashes.mjs';
+import { perResourceSriHashes } from './src/generated/sriHashes.mjs';
 
 const headersPath = path.join(process.cwd(), 'dist', '_headers');
 
@@ -12,19 +12,17 @@ async function generateCSPHeader() {
 
     // Generate CSP header
     const cspHeader =
-      `Content-Security-Policy: default-src 'self'; object-src 'self'; script-src 'self' 'wasm-unsafe-eval' https://track.example.com ${Array.from(
+      `Content-Security-Policy: default-src 'self'; object-src 'self'; script-src 'self' ${Array.from(
         scriptHashes
       )
         .map(hash => `'${hash}'`)
-        .join(
-          ' '
-        )}; connect-src 'self' https://track.example.com; style-src 'self' ${Array.from(
+        .join(' ')}; connect-src 'self'; style-src 'self' ${Array.from(
         styleHashes
       )
         .map(hash => `'${hash}'`)
         .join(
           ' '
-        )}; base-uri 'self'; img-src 'self' https://imagekit.io/truedaniyyel; frame-ancestors 'none'; worker-src 'self'; manifest-src 'none'; form-action 'self';`.trim();
+        )}; base-uri 'self'; img-src 'self' https://ik.imagekit.io/truedaniyyel/; frame-ancestors 'none'; worker-src 'self'; manifest-src 'none'; form-action 'self';`.trim();
 
     // Read existing _headers file
     let headersContent = await fs.readFile(headersPath, 'utf-8');
