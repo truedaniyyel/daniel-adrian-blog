@@ -2,6 +2,7 @@
 /*
 
 # Except these files & folders
+!/scripts
 !/src
 !/public
 !/.github
