@@ -1,6 +1,6 @@
 import fs from 'fs/promises';
 import path from 'path';
-import { perResourceSriHashes } from './src/generated/sriHashes.mjs';
+import { perResourceSriHashes } from '../src/generated/sriHashes.mjs';
 
 const headersPath = path.join(process.cwd(), 'dist', '_headers');
 
