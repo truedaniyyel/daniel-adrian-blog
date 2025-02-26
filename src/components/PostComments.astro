@@ -1,0 +1,78 @@
+<section class="giscus" aria-label="Comments Section"></section>
+
+<script>
+  function injectGiscus() {
+    // Only proceed if the comment container is present
+    const container = document.querySelector('.giscus');
+    if (!container) return;
+
+    // Remove any previously added giscus script if needed
+    const existingScript = document.querySelector(
+      'script[src="https://giscus.app/client.js"]'
+    );
+    if (existingScript) {
+      existingScript.remove();
+    }
+
+    // Get the theme from localStorage (fallback based on the current theme)
+    let giscusTheme =
+      localStorage.getItem('theme') === 'dark'
+        ? 'catppuccin_frappe'
+        : 'catppuccin_latte';
+
+    // Define the giscus attributes
+    const giscusAttributes = {
+      src: 'https://giscus.app/client.js',
+      'data-repo': 'truedaniyyel/daniel-adrian-blog',
+      'data-repo-id': 'R_kgDON-Q2pQ',
+      'data-category': 'Blog Post Comments',
+      'data-category-id': 'DIC_kwDON-Q2pc4CnWjM',
+      'data-mapping': 'url',
+      'data-strict': '0',
+      'data-reactions-enabled': '1',
+      'data-emit-metadata': '0',
+      'data-input-position': 'bottom',
+      'data-theme': giscusTheme,
+      'data-lang': 'en',
+      'data-loading': 'lazy',
+      crossorigin: 'anonymous',
+      async: '',
+    };
+
+    // Create the script element and set its attributes
+    const giscusScript = document.createElement('script');
+    Object.entries(giscusAttributes).forEach(([key, value]) =>
+      giscusScript.setAttribute(key, value)
+    );
+    // Append the script to the document body so it loads on the client
+    document.body.appendChild(giscusScript);
+  }
+
+  // Inject the giscus widget on initial load
+  injectGiscus();
+
+  // Re-inject the widget after any page transition (client-side navigation)
+  document.addEventListener('astro:after-swap', () => {
+    injectGiscus();
+  });
+</script>
+
+<style>
+  :global(.dark) .giscus {
+    background-color: var(--surface-dark);
+  }
+
+  .giscus {
+    margin-top: var(--px-48);
+    background-color: var(--surface-light);
+    border-radius: var(--radius-surface);
+    padding: var(--px-24);
+    box-shadow: var(--shadow-md-light);
+  }
+
+  @media (max-width: 34.25rem) {
+    .giscus {
+      padding: var(--px-16);
+    }
+  }
+</style>

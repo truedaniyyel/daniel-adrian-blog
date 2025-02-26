@@ -1,6 +1,7 @@
 ---
 import uiIcons from '@assets/uiIcons';
 import BaseLayout from '@layouts/BaseLayout.astro';
+import PostComments from '@components/PostComments.astro';
 import TOC from '@components/TOC.svelte';
 import { formatDate } from '@utils/formatDate';
 import { readingTime } from '@utils/readingTime';
@@ -115,61 +116,58 @@ const postLayoutProps = {
         </header>
         <section class="article"><Content /></section>
       </article>
-      <footer class="post-footer">
-        <nav class="post-nav" aria-label="Post navigation">
-          <!-- Previous post link -->
-          {
-            prevPost && (
-              <a
-                href={`/${prevPost.collection}/${prevPost.id}`}
-                rel="prev"
-                class="post-nav-link"
-              >
-                <span class="post-nav-icon">
-                  <Fragment set:html={uiIcons.chevron.chevronLeft} />
-                </span>
-                <div class="post-nav-text">
-                  <div class="post-nav-label">Previous</div>
-                  <div class="post-nav-title">{prevPost.data.title}</div>
-                </div>
-              </a>
-            )
-          }
 
-          <!-- Next post link -->
-          {
-            nextPost && (
-              <a
-                href={`/${nextPost.collection}/${nextPost.id}`}
-                rel="next"
-                class="post-nav-link"
-              >
-                <div class="post-nav-text">
-                  <div class="post-nav-label">Next</div>
-                  <div class="post-nav-title truncate-2">
-                    {nextPost.data.title}
-                  </div>
+      <section class="post-nav" aria-label="Post navigation">
+        <!-- Previous post link -->
+        {
+          prevPost && (
+            <a
+              href={`/${prevPost.collection}/${prevPost.id}`}
+              rel="prev"
+              class="post-nav-link"
+            >
+              <span class="post-nav-icon">
+                <Fragment set:html={uiIcons.chevron.chevronLeft} />
+              </span>
+              <div class="post-nav-text">
+                <div class="post-nav-label">Previous</div>
+                <div class="post-nav-title">{prevPost.data.title}</div>
+              </div>
+            </a>
+          )
+        }
+
+        <!-- Next post link -->
+        {
+          nextPost && (
+            <a
+              href={`/${nextPost.collection}/${nextPost.id}`}
+              rel="next"
+              class="post-nav-link"
+            >
+              <div class="post-nav-text">
+                <div class="post-nav-label">Next</div>
+                <div class="post-nav-title truncate-2">
+                  {nextPost.data.title}
                 </div>
-                <span class="post-nav-icon">
-                  <Fragment set:html={uiIcons.chevron.chevronRight} />
-                </span>
-              </a>
-            )
-          }
-        </nav>
-      </footer>
+              </div>
+              <span class="post-nav-icon">
+                <Fragment set:html={uiIcons.chevron.chevronRight} />
+              </span>
+            </a>
+          )
+        }
+      </section>
+
+      <PostComments />
     </main>
   </div>
-
-  <ScrollToTop client:only="svelte" />
 </BaseLayout>
+
+<ScrollToTop client:only="svelte" />
 
 <style>
   .post-container {
-    display: flex;
-    flex-direction: column;
-    gap: var(--px-18);
-    justify-content: center;
     max-width: var(--container-2xl);
     margin-inline: auto;
   }
@@ -184,6 +182,7 @@ const postLayoutProps = {
     background-color: var(--surface-light);
     box-shadow: var(--shadow-md-light);
     z-index: var(--z-max);
+    margin-bottom: var(--px-24);
   }
 
   :global(.dark) .main-nav {
@@ -415,10 +414,11 @@ const postLayoutProps = {
 <style is:inline>
   .table-wrapper {
     width: 100%;
-    margin-block: var(--px-24);
+    margin-block: var(--px-16);
     font-size: var(--text-base);
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
+    padding-block: var(--px-8);
   }
 
   .code-block-wrapper {
