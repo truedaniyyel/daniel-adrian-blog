@@ -64,12 +64,17 @@ mark {
 }
 
 .other-links a {
-  transition: box-shadow var(--transition-base);
+  transition: all var(--transition-base);
   color: var(--text-1);
 }
 
 .other-links a:hover {
   box-shadow: 0 var(--px-1) 0 0 currentColor;
+}
+
+.other-links a:active {
+  box-shadow: none;
+  transform: scale(0.95);
 }
 
 /* Social link styles */

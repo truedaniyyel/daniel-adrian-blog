@@ -90,8 +90,7 @@
     box-shadow: var(--shadow-lg-light);
   }
 
-  :global(.dark) .card:hover,
-  :global(.dark) .card:active {
+  :global(.dark) .card:hover {
     background-color: var(--card-dark-hover);
   }
 

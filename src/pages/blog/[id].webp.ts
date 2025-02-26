@@ -11,11 +11,19 @@ export async function getStaticPaths() {
 }
 
 export const GET: APIRoute = async ({ props }) => {
-  const image = await generateOgImageForPost(props as CollectionEntry<'blog'>);
-
-  return new Response(image, {
-    headers: {
-      'Content-Type': 'image.webp',
-    },
-  });
+  try {
+    const image = await generateOgImageForPost(
+      props as CollectionEntry<'blog'>
+    );
+    return new Response(image, {
+      headers: {
+        'Content-Type': 'image.webp',
+      },
+    });
+  } catch (error) {
+    console.error('Error generating OG image for blog post:', error);
+    return new Response('Error generating OG image for blog post', {
+      status: 500,
+    });
+  }
 };

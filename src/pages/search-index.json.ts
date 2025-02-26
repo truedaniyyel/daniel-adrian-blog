@@ -53,7 +53,6 @@ export const GET: APIRoute = async () => {
     return new Response(body, {
       headers: {
         'Content-Type': 'application/json',
-        'Cache-Control': 'public',
         //"Cache-Control": "public, max-age=86400", // Cache for 1 day
         ETag: `"${Buffer.from(body).length}"`,
       },
