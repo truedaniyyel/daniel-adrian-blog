@@ -1,6 +1,6 @@
 <section class="giscus" aria-label="Comments Section"></section>
 
-<script>
+<script is:inline>
   function injectGiscus() {
     // Only proceed if the comment container is present
     const container = document.querySelector('.giscus');
@@ -48,13 +48,7 @@
     document.body.appendChild(giscusScript);
   }
 
-  // Inject the giscus widget on initial load
   injectGiscus();
-
-  // Re-inject the widget after any page transition (client-side navigation)
-  document.addEventListener('astro:after-swap', () => {
-    injectGiscus();
-  });
 </script>
 
 <style>

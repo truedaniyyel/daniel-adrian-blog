@@ -3,6 +3,7 @@
   import Modal from '@components/Modal/Modal.svelte';
   import { debounce } from '@utils/debounce';
   import { onMount } from 'svelte';
+  import { navigate } from 'astro:transitions/client';
 
   import type { SearchItem } from '@utils/search/types';
 
@@ -97,7 +98,7 @@
         break;
       case 'Enter':
         if (selectedIndex >= 0 && searchResults[selectedIndex])
-          window.location.href = searchResults[selectedIndex].path;
+          navigate(searchResults[selectedIndex].path);
         break;
     }
   }

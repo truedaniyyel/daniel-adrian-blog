@@ -19,7 +19,7 @@
       url.searchParams.set('tags', Array.from(selectedTags).join(','));
     else url.searchParams.delete('tags');
 
-    navigate(url.href, { history: 'replace' });
+    navigate(url.href);
   }
 
   function toggle(tag: string) {

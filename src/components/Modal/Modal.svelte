@@ -5,6 +5,7 @@
     type ModalType,
   } from '@components/Modal/modalStore.svelte';
   import { fade } from 'svelte/transition';
+  import { onMount } from 'svelte';
   import type { Snippet } from 'svelte';
 
   interface Props {
@@ -25,6 +26,20 @@
       modalStore.close();
     }
   }
+
+  onMount(() => {
+    const handleTransition = () => {
+      if (modalStore.isOpen(type)) {
+        modalStore.close();
+      }
+    };
+
+    document.addEventListener('astro:before-swap', handleTransition);
+
+    return () => {
+      document.removeEventListener('astro:before-swap', handleTransition);
+    };
+  });
 </script>
 
 <svelte:window onkeydown={handleEscape} />
