@@ -9,10 +9,7 @@ export type Site = {
   CANONICAL_URL: string;
   LOCALE?: string; // default en
   CATEGORIES: string[];
-  OG_IMAGE: {
-    SRC: string;
-    ALT: string;
-  };
+  OG_IMAGE: string;
 
   TWITTER?: {
     CREATOR?: string; // twitter handle

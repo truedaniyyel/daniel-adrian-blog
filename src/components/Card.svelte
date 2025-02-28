@@ -232,7 +232,7 @@
     }
 
     .card-content {
-      padding: var(--px-12) var(--px-4);
+      padding-top: 0;
     }
   }
 </style>

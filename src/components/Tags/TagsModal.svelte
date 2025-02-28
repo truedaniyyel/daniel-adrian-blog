@@ -40,18 +40,27 @@
 <Modal type="tags">
   {#snippet children()}
     <div class="tags">
-      <ul class="tag-list">
-        {#each tags as tag}
-          <li>
-            <button
-              class={['btn tag-btn', tempSelected.has(tag) && 'tag-active-btn']}
-              onclick={() => toggle(tag)}
-            >
-              {tag}
-            </button>
-          </li>
-        {/each}
-      </ul>
+      {#if tags.size}
+        <ul class="tag-list">
+          {#each tags as tag}
+            <li>
+              <button
+                class={[
+                  'btn tag-btn',
+                  tempSelected.has(tag) && 'tag-active-btn',
+                ]}
+                onclick={() => toggle(tag)}
+              >
+                {tag}
+              </button>
+            </li>
+          {/each}
+        </ul>
+      {:else}
+        <div class="not-found-message">
+          <p>No tags to display.</p>
+        </div>
+      {/if}
     </div>
     <button class="btn modal-btn reset-btn" onclick={reset}>Reset</button>
     <button class="btn modal-btn apply-btn" onclick={apply}>Apply</button>
@@ -65,6 +74,7 @@
     background-color: var(--surface-light);
     border-radius: var(--radius-surface);
     overflow: hidden;
+
     margin-bottom: var(--px-8);
   }
 

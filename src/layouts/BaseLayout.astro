@@ -102,12 +102,15 @@ const schemaData = {
 
     <!-- Previous URL handling -->
     <script is:inline>
-      if (
-        !window.location.pathname.includes('/blog/') &&
-        !window.location.pathname.includes('/projects/')
-      ) {
-        sessionStorage.setItem('previousPageUrl', window.location.href);
-      }
+      document.addEventListener('astro:before-preparation', () => {
+        // Don't save the URL if we're already on a post page
+        if (
+          !window.location.pathname.startsWith('/blog/') ||
+          !window.location.pathname.startsWith('/projects/')
+        ) {
+          sessionStorage.setItem('previousPageUrl', window.location.pathname);
+        }
+      });
     </script>
 
     {

@@ -219,6 +219,17 @@ mark {
   color: var(--text-light);
 }
 
+.not-found-message {
+  background-color: var(--surface-light);
+  border-radius: var(--radius-surface);
+  box-shadow: var(--shadow-sm-light);
+  padding: var(--px-12) var(--px-16);
+}
+
+.dark .not-found-message {
+  background-color: var(--surface-dark);
+}
+
 /* Media queries */
 @media (max-width: 34.25rem) {
   body {

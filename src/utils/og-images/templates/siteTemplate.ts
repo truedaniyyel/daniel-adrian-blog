@@ -1,9 +1,12 @@
 import satori from 'satori';
+import type { Font } from 'satori';
 import { html } from 'satori-html';
 import type { SvgConfig } from '../types';
-import { DEFAULT_FONTS } from '../config';
 
-export async function generateSiteOgSvg(svgConfig: SvgConfig) {
+export async function generateSiteOgSvg(
+  svgConfig: SvgConfig,
+  fontsConfig: Font[]
+) {
   const markup = html(`
 <div
   style="position: relative; width: 1200px; height: 630px; display: flex; justify-content: space-between; background: #f9f9f5; padding: 40px; font-family: Arial, sans-serif;"
@@ -83,6 +86,6 @@ export async function generateSiteOgSvg(svgConfig: SvgConfig) {
 
   return await satori(markup, {
     ...svgConfig,
-    fonts: DEFAULT_FONTS,
+    fonts: fontsConfig,
   });
 }

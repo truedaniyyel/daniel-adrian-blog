@@ -5,15 +5,12 @@ const isDev = import.meta.env.DEV;
 
 export const SITE: Site = {
   TITLE: "Daniel Adrian's blog",
-  DESCRIPTION: 'Personal blog of Daniel Adrian',
+  DESCRIPTION: 'Helping You Make Sense of Things',
   AUTHOR: 'Daniel Adrian',
   CANONICAL_URL: isDev ? 'http://localhost:4321' : 'https://truedaniyyel.com',
   LOCALE: 'en',
   CATEGORIES: ['blog', 'projects'],
-  OG_IMAGE: {
-    SRC: '/og-image.jpg',
-    ALT: "Daniel Adrian's Blog",
-  },
+  OG_IMAGE: '/og-image.webp',
 
   TWITTER: {
     CREATOR: '@truedaniyyel',

@@ -3,7 +3,7 @@ import type { ImageConfig } from './types';
 import type { CollectionEntry } from 'astro:content';
 import { generatePostOgSvg } from './templates/postTemplate';
 import { generateSiteOgSvg } from './templates/siteTemplate';
-import { DEFAULT_SVG, DEFAULT_IMAGE } from './config';
+import { DEFAULT_IMAGE, DEFAULT_SVG, DEFAULT_FONTS } from './config';
 
 export async function svgBufferToImageBuffer(
   svg: string,
@@ -26,13 +26,13 @@ export async function svgBufferToImageBuffer(
 export async function generateOgImageForPost(
   post: CollectionEntry<'blog'> | CollectionEntry<'projects'>
 ) {
-  const svg = await generatePostOgSvg(post, DEFAULT_SVG);
+  const svg = await generatePostOgSvg(post, DEFAULT_SVG, DEFAULT_FONTS);
 
   return await svgBufferToImageBuffer(svg);
 }
 
 export async function generateOgImageForSite() {
-  const svg = await generateSiteOgSvg(DEFAULT_SVG);
+  const svg = await generateSiteOgSvg(DEFAULT_SVG, DEFAULT_FONTS);
 
   return await svgBufferToImageBuffer(svg);
 }

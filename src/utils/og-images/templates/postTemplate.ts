@@ -1,14 +1,15 @@
-import satori from 'satori';
-import { formatDate } from '@utils/formatDate';
 import { SITE } from '@consts';
+import satori from 'satori';
+import type { Font } from 'satori';
 import { html } from 'satori-html';
+import { formatDate } from '@utils/formatDate';
 import type { CollectionEntry } from 'astro:content';
 import type { SvgConfig } from '../types';
-import { DEFAULT_FONTS } from '../config';
 
 export async function generatePostOgSvg(
   post: CollectionEntry<'blog'> | CollectionEntry<'projects'>,
-  svgConfig: SvgConfig
+  svgConfig: SvgConfig,
+  fontsConfig: Font[]
 ) {
   const markup = html(`
     <div style="display: flex; align-items: center; justify-content: center; width: 1200px; height: 630px; background: linear-gradient(to bottom right, #fbc2eb, #ff6a88); position: relative; overflow: hidden; border-radius: 16px;">
@@ -36,6 +37,6 @@ export async function generatePostOgSvg(
 
   return await satori(markup, {
     ...svgConfig,
-    fonts: DEFAULT_FONTS,
+    fonts: fontsConfig,
   });
 }

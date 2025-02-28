@@ -24,11 +24,16 @@
     }
   }
 
+  function closeToc() {
+    isTocOpen = false;
+    document.documentElement.removeAttribute('style');
+    postEl?.removeAttribute('inert');
+  }
+
   function handleEscape(e: KeyboardEvent) {
     if (!isTocOpen || e.code !== 'Escape') return;
     e.preventDefault();
-    isTocOpen = false;
-    document.documentElement.removeAttribute('style');
+    closeToc();
   }
 </script>
 
@@ -37,7 +42,7 @@
 {#if isTocOpen}
   <div
     class="modal-overlay"
-    onclick={() => (isTocOpen = false)}
+    onclick={closeToc}
     aria-hidden={!isTocOpen}
     transition:fade={{
       duration: 200,

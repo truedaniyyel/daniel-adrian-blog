@@ -2,11 +2,12 @@
 import uiIcons from '@assets/uiIcons';
 import BaseLayout from '@layouts/BaseLayout.astro';
 import PostComments from '@components/PostComments.astro';
+import BackHome from '@components/BackHome.svelte';
 import TOC from '@components/TOC.svelte';
+import ScrollToTop from '@components/ScrollToTop.svelte';
+import { posts } from '@utils/getSortedPosts';
 import { formatDate } from '@utils/formatDate';
 import { readingTime } from '@utils/readingTime';
-import { posts } from '@utils/getSortedPosts';
-import ScrollToTop from '@components/ScrollToTop.svelte';
 import { type CollectionEntry, render } from 'astro:content';
 
 interface Props {
@@ -46,7 +47,7 @@ const postLayoutProps = {
 <BaseLayout {...postLayoutProps}>
   <div class="post-container">
     <nav class="main-nav">
-      <button class="btn primary-btn back-home-btn">Back home</button>
+      <BackHome client:only="svelte" />
 
       {
         validHeadings.length > 0 && (
@@ -190,12 +191,6 @@ const postLayoutProps = {
     box-shadow: var(--shadow-sm-dark);
   }
 
-  .back-home-btn {
-    padding: var(--px-12) var(--px-16);
-    border-radius: var(--radius-surface);
-    text-wrap: nowrap;
-  }
-
   .post-article {
     margin-bottom: var(--px-24);
     padding: var(--px-20) var(--px-24) var(--px-24);
@@ -329,15 +324,6 @@ const postLayoutProps = {
     }
   }
 </style>
-
-<script>
-  document.addEventListener('astro:page-load', () => {
-    // Back button handling
-    document.querySelector('.back-home-btn')?.addEventListener('click', () => {
-      history.back();
-    });
-  });
-</script>
 
 <script is:inline>
   function setupPageElements() {

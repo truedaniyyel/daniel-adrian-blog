@@ -110,7 +110,7 @@
   </header>
 
   {#if filteredPosts.length === 0}
-    <div class="no-posts-message">
+    <div class="not-found-message">
       <p>Nothing here yet.</p>
     </div>
   {:else}
@@ -205,17 +205,6 @@
     justify-content: center;
     gap: var(--px-16);
     margin-bottom: var(--px-16);
-  }
-
-  .no-posts-message {
-    background-color: var(--surface-light);
-    border-radius: var(--radius-surface);
-    box-shadow: var(--shadow-sm-light);
-    padding: var(--px-12) var(--px-16);
-  }
-
-  :global(.dark) .no-posts-message {
-    background-color: var(--surface-dark);
   }
 
   @media (max-width: 50rem) {
