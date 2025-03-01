@@ -74,7 +74,6 @@
     background-color: var(--surface-light);
     border-radius: var(--radius-surface);
     overflow: hidden;
-
     margin-bottom: var(--px-8);
   }
 
@@ -103,20 +102,6 @@
     background-color: var(--on-surface-dark);
   }
 
-  .tag-btn:hover {
-    transform: translateY(-2px);
-    background-color: var(--modal-btn-on-surface-light-hover);
-  }
-
-  :global(.dark) .tag-btn:hover {
-    background-color: var(--on-surface-dark-hover);
-  }
-
-  .tag-btn:active {
-    transform: translateY(0);
-    transform: scale(0.95);
-  }
-
   .tag-active-btn {
     color: var(--text-dark);
     background-color: var(--on-surface-dark);
@@ -127,13 +112,56 @@
     background-color: var(--on-surface-light);
   }
 
-  .tag-active-btn:hover {
-    background-color: var(--on-surface-dark-hover);
+  /* Hover effects - only for devices that support hover */
+  @media (hover: hover) and (pointer: fine) {
+    .tag-btn:hover {
+      transform: translateY(-2px);
+      background-color: var(--modal-btn-on-surface-light-hover);
+    }
+
+    :global(.dark) .tag-btn:hover {
+      background-color: var(--on-surface-dark-hover);
+    }
+
+    .tag-active-btn:hover {
+      background-color: var(--on-surface-dark-hover);
+    }
+
+    :global(.dark) .tag-active-btn:hover {
+      background-color: var(--on-surface-light-hover);
+      opacity: 0.85;
+    }
   }
 
-  :global(.dark) .tag-active-btn:hover {
-    background-color: var(--on-surface-light-hover);
-    opacity: 0.85;
+  /* Touch device active states */
+  @media (hover: none) {
+    .tag-btn:active {
+      transform: scale(0.95);
+      background-color: var(--modal-btn-on-surface-light-hover);
+    }
+
+    :global(.dark) .tag-btn:active {
+      background-color: var(--on-surface-dark-hover);
+    }
+
+    .tag-active-btn:active {
+      transform: scale(0.95);
+      background-color: var(--on-surface-dark-hover);
+    }
+
+    :global(.dark) .tag-active-btn:active {
+      background-color: var(--on-surface-light-hover);
+      opacity: 0.85;
+    }
+
+    .tag-btn:hover {
+      transform: none;
+    }
+  }
+
+  /* Common active state - for both touch and mouse */
+  .tag-btn:active {
+    transform: translateY(0) scale(0.95);
   }
 
   .reset-btn,

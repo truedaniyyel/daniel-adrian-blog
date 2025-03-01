@@ -40,7 +40,7 @@
   margin-bottom: var(--px-20);
 }
 
-/* Links */
+/* Links - Base styles */
 .article a {
   color: var(--article-link);
   transition: all 0.2s ease;
@@ -50,14 +50,58 @@
   -moz-text-decoration-color: transparent;
 }
 
-.article a:is(:hover, :focus) {
-  color: var(
-    --article-link-hover,
-    color-mix(in srgb, var(--article-link) 85%, white)
-  );
-  text-decoration-color: currentColor;
-  -webkit-text-decoration-color: currentColor;
-  -moz-text-decoration-color: currentColor;
+/* Hover states - Desktop only */
+@media (hover: hover) and (pointer: fine) {
+  .article a:hover,
+  .article a:focus {
+    color: var(
+      --article-link-hover,
+      color-mix(in srgb, var(--article-link) 85%, white)
+    );
+    text-decoration-color: currentColor;
+    -webkit-text-decoration-color: currentColor;
+    -moz-text-decoration-color: currentColor;
+  }
+
+  .article a:visited:hover,
+  .article a:visited:focus {
+    color: var(
+      --article-link-visited-hover,
+      color-mix(in srgb, var(--article-link-visited) 85%, white)
+    );
+  }
+
+  .dark .article a:hover,
+  .dark .article a:focus {
+    color: var(
+      --article-link-hover-dark,
+      color-mix(in srgb, var(--article-link) 70%, white)
+    );
+  }
+
+  .dark .article a:visited:hover,
+  .dark .article a:visited:focus {
+    color: var(
+      --article-link-visited-hover-dark,
+      color-mix(in srgb, var(--article-link-visited) 70%, white)
+    );
+  }
+}
+
+/* Touch device states */
+@media (hover: none) {
+  /* Disable hover effects on touch */
+  .article a:hover {
+    color: var(--article-link);
+    text-decoration-color: transparent;
+  }
+
+  .dark .article a:hover {
+    color: var(
+      --article-link-dark,
+      color-mix(in srgb, var(--article-link) 85%, white)
+    );
+  }
 }
 
 .article a:active {
@@ -69,13 +113,6 @@
 
 .article a:visited {
   color: var(--article-link-visited);
-}
-
-.article a:visited:is(:hover, :focus) {
-  color: var(
-    --article-link-visited-hover,
-    color-mix(in srgb, var(--article-link-visited) 85%, white)
-  );
 }
 
 .article a:visited:active {
@@ -92,13 +129,6 @@
   );
 }
 
-.dark .article a:is(:hover, :focus) {
-  color: var(
-    --article-link-hover-dark,
-    color-mix(in srgb, var(--article-link) 70%, white)
-  );
-}
-
 .dark .article a:active {
   color: var(
     --article-link-active-dark,
@@ -110,13 +140,6 @@
   color: var(
     --article-link-visited-dark,
     color-mix(in srgb, var(--article-link-visited) 85%, white)
-  );
-}
-
-.dark .article a:visited:is(:hover, :focus) {
-  color: var(
-    --article-link-visited-hover-dark,
-    color-mix(in srgb, var(--article-link-visited) 70%, white)
   );
 }
 

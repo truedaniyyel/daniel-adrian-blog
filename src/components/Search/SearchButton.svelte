@@ -29,10 +29,15 @@
     padding: var(--px-8) var(--px-8) var(--px-8) var(--px-16);
     border-radius: var(--radius-on-surface);
     background-color: var(--on-surface-light);
+    transition: transform var(--transition-base);
   }
 
   :global(.dark) .search-button {
     background-color: var(--on-surface-dark);
+  }
+
+  .search-button:active {
+    transform: scale(0.98);
   }
 
   .search-icon {

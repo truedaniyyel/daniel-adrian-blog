@@ -86,15 +86,19 @@
     background-color: var(--surface-dark);
   }
 
-  .card:hover {
-    box-shadow: var(--shadow-lg-light);
-  }
+  /* Hover effects - only for devices that support hover */
+  @media (hover: hover) and (pointer: fine) {
+    .card:hover {
+      box-shadow: var(--shadow-lg-light);
+    }
 
-  :global(.dark) .card:hover {
-    background-color: var(--card-dark-hover);
+    :global(.dark) .card:hover {
+      background-color: var(--card-dark-hover);
+    }
   }
 
   .card:active {
+    transform: scale(0.98);
     background-color: var(--surface-dark);
     color: var(--text-dark);
   }
@@ -175,6 +179,7 @@
     width: var(--px-16);
   }
 
+  /* Transitions for child elements */
   .card-tag,
   .card-img,
   .card-arrow {
@@ -187,6 +192,7 @@
     background-color: var(--on-surface-dark);
   }
 
+  /* Active states for child elements */
   .card:active .card-tag {
     color: var(--text-dark);
   }

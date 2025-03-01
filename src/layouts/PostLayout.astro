@@ -254,12 +254,23 @@ const postLayoutProps = {
     background-color: var(--surface-dark);
   }
 
-  .post-nav-link:hover {
-    box-shadow: var(--shadow-lg-light);
+  /* Navigation link hover - desktop only */
+  @media (hover: hover) and (pointer: fine) {
+    .post-nav-link:hover {
+      box-shadow: var(--shadow-lg-light);
+    }
+
+    :global(.dark) .post-nav-link:hover {
+      background-color: var(--card-dark-hover);
+    }
   }
 
-  :global(.dark) .post-nav-link:hover {
-    background-color: var(--card-dark-hover);
+  /* Navigation link touch states */
+  @media (hover: none) {
+    /* Disable hover effects on touch */
+    .post-nav-link:hover {
+      box-shadow: var(--shadow-sm-light);
+    }
   }
 
   .post-nav-link:active {
@@ -424,9 +435,21 @@ const postLayoutProps = {
     z-index: var(--z-50);
   }
 
-  .copy-button:hover {
-    opacity: 1;
-    background-color: var(--surface-light);
+  /* Copy button hover - desktop only */
+  @media (hover: hover) and (pointer: fine) {
+    .copy-button:hover {
+      opacity: 1;
+      background-color: var(--surface-light);
+    }
+  }
+
+  /* Copy button touch states */
+  @media (hover: none) {
+    /* Disable hover effects on touch */
+    .copy-button:hover {
+      opacity: 0.8;
+      background-color: var(--surface-light);
+    }
   }
 
   .copy-button .icon-container {

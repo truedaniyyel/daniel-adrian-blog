@@ -172,6 +172,11 @@
 
   .logo {
     padding-inline: var(--px-16);
+    transition: transform var(--transition-base);
+  }
+
+  .logo:active {
+    transform: scale(0.98);
   }
 
   .logo h1 {

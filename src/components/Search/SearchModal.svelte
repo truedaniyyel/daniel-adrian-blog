@@ -264,21 +264,38 @@
     padding: var(--px-8) var(--px-12);
     border-radius: var(--radius-on-surface);
     cursor: pointer;
-    transition: background-color var(--transition-base);
+    transition: all var(--transition-base);
   }
 
   .active-result,
-  .nav-btn-icon,
-  .search-result:hover,
-  .search-result:active {
+  .nav-btn-icon {
     background-color: var(--on-surface-light);
   }
 
   :global(.dark) .active-result,
-  :global(.dark) .nav-btn-icon,
-  :global(.dark) .search-result:hover,
-  :global(.dark) .search-result:active {
+  :global(.dark) .nav-btn-icon {
     background-color: var(--on-surface-dark);
+  }
+
+  /* Hover effects - only for devices that support hover */
+  @media (hover: hover) and (pointer: fine) {
+    .search-result:hover {
+      background-color: var(--on-surface-light);
+    }
+
+    :global(.dark) .search-result:hover {
+      background-color: var(--on-surface-dark);
+    }
+  }
+
+  .search-result:active {
+    background-color: var(--on-surface-dark);
+    color: var(--text-dark);
+  }
+
+  :global(.dark) .search-result:active {
+    background-color: var(--on-surface-light);
+    color: var(--text-light);
   }
 
   .result-header {

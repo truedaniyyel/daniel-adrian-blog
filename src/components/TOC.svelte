@@ -115,12 +115,35 @@
     transition: all var(--transition-lg);
   }
 
-  .toc-toggle:hover {
-    background-color: var(--modal-btn-on-surface-light-hover);
+  /* Toggle button hover states - desktop only */
+  @media (hover: hover) and (pointer: fine) {
+    .toc-toggle:hover {
+      background-color: var(--modal-btn-on-surface-light-hover);
+    }
+
+    :global(.dark) .toc-toggle:hover {
+      background-color: var(--on-surface-dark-hover);
+    }
+
+    /* Open state hover */
+    .toc-wrapper.open .toc-toggle:hover {
+      background-color: var(--surface-light);
+      opacity: 0.85;
+    }
+
+    :global(.dark) .toc-wrapper.open .toc-toggle:hover {
+      background-color: var(--modal-btn-dark);
+      opacity: 1;
+    }
   }
 
-  :global(.dark) .toc-toggle:hover {
-    background-color: var(--on-surface-dark-hover);
+  /* Toggle button touch states */
+  @media (hover: none) {
+    /* Disable hover effects on touch devices */
+    .toc-toggle:hover {
+      background-color: inherit;
+      opacity: 1;
+    }
   }
 
   .toc-toggle:active {
@@ -131,16 +154,6 @@
   :global(.dark) .toc-toggle:active {
     background-color: var(--on-surface-light);
     color: var(--text-light);
-  }
-
-  .toc-wrapper.open .toc-toggle:hover {
-    background-color: var(--surface-light);
-    opacity: 0.85;
-  }
-
-  :global(.dark) .toc-wrapper.open .toc-toggle:hover {
-    background-color: var(--modal-btn-dark);
-    opacity: 1;
   }
 
   .toc-wrapper.open .toc-toggle:active {
@@ -189,12 +202,23 @@
     transition: background-color var(--transition-lg);
   }
 
-  .item-link:hover {
-    background-color: var(--on-surface-light-hover);
+  /* TOC item hover states - desktop only */
+  @media (hover: hover) and (pointer: fine) {
+    .item-link:hover {
+      background-color: var(--on-surface-light-hover);
+    }
+
+    :global(.dark) .item-link:hover {
+      background-color: var(--on-surface-dark-hover);
+    }
   }
 
-  :global(.dark) .item-link:hover {
-    background-color: var(--on-surface-dark-hover);
+  /* TOC item touch states */
+  @media (hover: none) {
+    /* Disable hover effects on touch devices */
+    .item-link:hover {
+      background-color: inherit;
+    }
   }
 
   .item-link:active {

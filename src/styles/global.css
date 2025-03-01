@@ -68,8 +68,18 @@ mark {
   color: var(--text-1);
 }
 
-.other-links a:hover {
-  box-shadow: 0 var(--px-1) 0 0 currentColor;
+/* Other links hover - desktop only */
+@media (hover: hover) and (pointer: fine) {
+  .other-links a:hover {
+    box-shadow: 0 var(--px-1) 0 0 currentColor;
+  }
+}
+
+/* Other links touch states */
+@media (hover: none) {
+  .other-links a:hover {
+    box-shadow: none;
+  }
 }
 
 .other-links a:active {
@@ -93,22 +103,27 @@ mark {
   background-color: var(--on-surface-dark);
 }
 
-.social-link-icon:hover {
-  transform: translateY(-2px);
-  opacity: 0.8;
+@media (hover: hover) and (pointer: fine) {
+  .social-link-icon:hover {
+    transform: translateY(-2px);
+    opacity: 0.8;
+  }
+
+  .dark .social-link-icon:hover {
+    background-color: var(--on-surface-dark-hover);
+    opacity: 1;
+  }
 }
 
-.dark .social-link-icon:hover {
-  background-color: var(--on-surface-dark-hover);
-  opacity: 1;
-}
-
-.social-link-icon:active,
-.dark .social-link-icon:active {
-  transform: translateY(0);
+@media (hover: none) {
+  .social-link-icon:hover {
+    transform: none;
+    opacity: 1;
+  }
 }
 
 .social-link-icon:active {
+  transform: translateY(0);
   background-color: var(--on-surface-dark);
   color: var(--text-dark);
 }
@@ -134,14 +149,24 @@ mark {
   transition: all var(--transition-base);
 }
 
-.nav-link:hover,
-.btn-active {
-  background-color: var(--on-surface-content-light);
+/* Nav links hover - desktop only */
+@media (hover: hover) and (pointer: fine) {
+  .nav-link:hover,
+  .btn-active {
+    background-color: var(--on-surface-content-light);
+  }
+
+  .dark .nav-link:hover,
+  .dark .btn-active {
+    background-color: var(--on-surface-content-dark);
+  }
 }
 
-.dark .nav-link:hover,
-.dark .btn-active {
-  background-color: var(--on-surface-content-dark);
+/* Nav links touch states */
+@media (hover: none) {
+  .nav-link:hover {
+    background-color: transparent;
+  }
 }
 
 .nav-link:active {
@@ -166,8 +191,18 @@ mark {
   background-color: var(--surface-light);
 }
 
-.primary-btn:hover {
-  opacity: 0.85;
+/* Primary button hover - desktop only */
+@media (hover: hover) and (pointer: fine) {
+  .primary-btn:hover {
+    opacity: 0.85;
+  }
+}
+
+/* Primary button touch states */
+@media (hover: none) {
+  .primary-btn:hover {
+    opacity: 1;
+  }
 }
 
 .primary-btn:active {
@@ -199,13 +234,23 @@ mark {
   background-color: var(--surface-dark);
 }
 
-.modal-btn:hover {
-  opacity: 0.85;
+/* Modal button hover - desktop only */
+@media (hover: hover) and (pointer: fine) {
+  .modal-btn:hover {
+    opacity: 0.85;
+  }
+
+  .dark .modal-btn:hover {
+    background-color: var(--modal-btn-dark);
+    opacity: 1;
+  }
 }
 
-.dark .modal-btn:hover {
-  background-color: var(--modal-btn-dark);
-  opacity: 1;
+/* Modal button touch states */
+@media (hover: none) {
+  .modal-btn:hover {
+    opacity: 1;
+  }
 }
 
 .modal-btn:active {
