@@ -1,13 +1,13 @@
 import type { Site, Socials } from './types';
 import { minutesToMilliseconds } from './utils/minutesToMilliseconds';
 
-const isDev = import.meta.env.DEV;
-
 export const SITE: Site = {
   TITLE: "Daniel Adrian's blog",
   DESCRIPTION: 'Helping You Make Sense of Things',
   AUTHOR: 'Daniel Adrian',
-  CANONICAL_URL: isDev ? 'http://localhost:4321' : 'https://truedaniyyel.com',
+  CANONICAL_URL: import.meta.env.DEV
+    ? 'http://localhost:4321'
+    : 'https://truedaniyyel.com',
   LOCALE: 'en',
   CATEGORIES: ['blog', 'projects'],
   OG_IMAGE: '/og-image.webp',

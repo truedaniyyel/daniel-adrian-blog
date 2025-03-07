@@ -60,19 +60,17 @@ const postLayoutProps = {
       <article class="post-article">
         <header class="post-header">
           <div class="post-details">
-            <div class="post-date">
-              <time
-                datetime={(
-                  post.data.modDatetime || post.data.pubDatetime
-                ).toISOString()}
-              >
-                {
-                  post.data.modDatetime
-                    ? `Upd: ${formatDate(post.data.modDatetime)}`
-                    : formatDate(post.data.pubDatetime)
-                }
-              </time>
-            </div>
+            <time
+              datetime={(
+                post.data.modDatetime || post.data.pubDatetime
+              ).toISOString()}
+            >
+              {
+                post.data.modDatetime
+                  ? `Upd: ${formatDate(post.data.modDatetime)}`
+                  : formatDate(post.data.pubDatetime)
+              }
+            </time>
             {
               post.body && (
                 <>

@@ -2,26 +2,19 @@ import { getCollection } from 'astro:content';
 import { filterPosts } from './filterPosts';
 import { sortByDate } from './sortByDate';
 
-async function getSortedBlog() {
-  const blog = await getCollection('blog', filterPosts);
-
-  return sortByDate(blog);
-}
-
-async function getSortedProjects() {
-  const projects = await getCollection('projects', filterPosts);
-
-  return sortByDate(projects);
+async function getSortedCollection(collectionName: 'blog' | 'projects') {
+  const collection = await getCollection(collectionName, filterPosts);
+  return sortByDate(collection);
 }
 
 async function getSortedPosts() {
   const [blogPosts, projectPosts] = await Promise.all([
-    getSortedBlog(),
-    getSortedProjects(),
+    getSortedCollection('blog'),
+    getSortedCollection('projects'),
   ]);
   return sortByDate([...blogPosts, ...projectPosts]);
 }
 
-export const blog = await getSortedBlog();
-export const projects = await getSortedProjects();
+export const blog = await getSortedCollection('blog');
+export const projects = await getSortedCollection('projects');
 export const posts = await getSortedPosts();

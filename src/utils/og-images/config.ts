@@ -3,10 +3,10 @@ import type { ImageConfig, SvgConfig } from './types';
 import type { Font } from 'satori';
 
 const interRegular = readFileSync(
-  `${process.cwd()}/public/og-fonts/Inter-Regular.ttf`
+  `${process.cwd()}/public/og-fonts/inter-v18-latin-regular.ttf`
 );
 const interBlack = readFileSync(
-  `${process.cwd()}/public/og-fonts/Inter-Black.ttf`
+  `${process.cwd()}/public/og-fonts/inter-v18-latin-900.ttf`
 );
 
 export const DEFAULT_IMAGE: ImageConfig = {
