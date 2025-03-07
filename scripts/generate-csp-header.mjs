@@ -10,7 +10,7 @@ import {
 
 const headersPath = path.join(process.cwd(), 'dist', '_headers');
 
-async function generateCSPHeader() {
+async function generateCSPHeaders() {
   try {
     // Combine all script hashes
     const scriptHashes = new Set([
@@ -26,32 +26,43 @@ async function generateCSPHeader() {
       ...Object.values(perResourceSriHashes.styles),
     ]);
 
-    // Generate CSP header
-    const cspHeader =
+    // Split CSP into multiple headers
+    const cspHeaders = [
+      // First CSP header with default-src, object-src, and script-src directives
       `Content-Security-Policy: default-src 'self'; object-src 'self'; script-src 'self' ${Array.from(
         scriptHashes
       )
         .map(hash => `'${hash}'`)
-        .join(' ')}; connect-src 'self'; style-src 'self' ${Array.from(
+        .join(' ')};`,
+
+      // Second CSP header with connect-src, style-src, and base-uri directives
+      `Content-Security-Policy: connect-src 'self'; style-src 'self' ${Array.from(
         styleHashes
       )
         .map(hash => `'${hash}'`)
-        .join(
-          ' '
-        )}; base-uri 'self'; img-src 'self' https://ik.imagekit.io/truedaniyyel/; frame-ancestors 'none'; worker-src 'self'; manifest-src 'none'; form-action 'self';`.trim();
+        .join(' ')}; base-uri 'self';`,
+
+      // Third CSP header with remaining directives
+      `Content-Security-Policy: img-src 'self' https://ik.imagekit.io/truedaniyyel/; frame-ancestors 'none'; worker-src 'self'; manifest-src 'none'; form-action 'self';`,
+    ];
 
     // Read existing _headers file
     let headersContent = await fs.readFile(headersPath, 'utf-8');
 
-    headersContent += '\n  ' + cspHeader;
+    // Add each CSP header on a new line
+    cspHeaders.forEach(header => {
+      headersContent += '\n  ' + header;
+    });
 
     // Write updated content back to _headers file
     await fs.writeFile(headersPath, headersContent);
 
-    console.log('CSP header generated and _headers file updated successfully.');
+    console.log(
+      'CSP headers generated and _headers file updated successfully.'
+    );
   } catch (error) {
-    console.error('Error generating CSP header:', error);
+    console.error('Error generating CSP headers:', error);
   }
 }
 
-generateCSPHeader();
+generateCSPHeaders();
