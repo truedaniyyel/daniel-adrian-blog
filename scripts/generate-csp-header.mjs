@@ -17,7 +17,7 @@ async function generateCSPHeader() {
 
     // Generate CSP header
     const cspHeader =
-      `Content-Security-Policy: default-src 'self'; object-src 'self'; script-src 'self' ${Array.from(
+      `Content-Security-Policy: default-src 'self'; object-src 'self'; script-src 'self' https://giscus.app ${Array.from(
         scriptHashes
       )
         .map(hash => `'${hash}'`)
