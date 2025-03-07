@@ -16,20 +16,23 @@ async function generateCSPHeader() {
     const styleHashes = new Set([...inlineStyleHashes]);
 
     // Generate CSP header
-    const cspHeader =
-      `Content-Security-Policy: default-src 'self'; object-src 'self'; script-src 'self' https://giscus.app ${Array.from(
-        scriptHashes
-      )
-        .map(hash => `'${hash}'`)
-        .join(
-          ' '
-        )}; connect-src 'self'; style-src 'self' https://giscus.app ${Array.from(
-        styleHashes
-      )
-        .map(hash => `'${hash}'`)
-        .join(
-          ' '
-        )}; base-uri 'self'; img-src 'self' https://ik.imagekit.io/truedaniyyel/; frame-ancestors 'none'; worker-src 'self'; manifest-src 'none'; form-action 'self';`.trim();
+    const cspHeader = `Content-Security-Policy: 
+    default-src 'self'; 
+    object-src 'self'; 
+    script-src 'self' https://giscus.app ${Array.from(scriptHashes)
+      .map(hash => `'${hash}'`)
+      .join(' ')}; 
+    connect-src 'self' https://giscus.app; 
+    style-src 'self' ${Array.from(styleHashes)
+      .map(hash => `'${hash}'`)
+      .join(' ')}; 
+    frame-src https://giscus.app;
+    base-uri 'self'; 
+    img-src 'self' https://ik.imagekit.io/truedaniyyel/; 
+    frame-ancestors 'none'; 
+    worker-src 'self'; 
+    manifest-src 'none'; 
+    form-action 'self';`.trim();
 
     // Read existing _headers file
     let headersContent = await fs.readFile(headersPath, 'utf-8');
