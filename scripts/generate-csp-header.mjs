@@ -21,7 +21,9 @@ async function generateCSPHeader() {
         scriptHashes
       )
         .map(hash => `'${hash}'`)
-        .join(' ')}; connect-src 'self'; style-src 'self' ${Array.from(
+        .join(
+          ' '
+        )}; connect-src 'self'; style-src 'self' https://giscus.app ${Array.from(
         styleHashes
       )
         .map(hash => `'${hash}'`)
