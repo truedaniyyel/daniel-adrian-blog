@@ -105,10 +105,10 @@ const schemaData = {
       document.addEventListener('astro:before-preparation', () => {
         // Don't save the URL if we're already on a post page
         if (
-          !window.location.pathname.startsWith('/blog/') ||
+          !window.location.pathname.startsWith('/blog/') &&
           !window.location.pathname.startsWith('/projects/')
         ) {
-          sessionStorage.setItem('previousPageUrl', window.location.pathname);
+          sessionStorage.setItem('previousPageUrl', window.location.href);
         }
       });
     </script>
