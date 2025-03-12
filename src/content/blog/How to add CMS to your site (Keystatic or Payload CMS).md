@@ -1,5 +1,5 @@
 ---
-title: 'How to add CMS to your site (Keystatic or Payload CMS)'
+title: 'How to add CMS to your website (Keystatic or Payload CMS)'
 pubDatetime: 2025-02-02
 description: '...'
 author: 'Daniel Adrian'

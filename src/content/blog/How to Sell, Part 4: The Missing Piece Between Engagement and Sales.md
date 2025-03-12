@@ -1,5 +1,5 @@
 ---
-title: 'How to Sell, Part 4: The Missing Piece'
+title: 'How to Sell, Part 4: Importance of A Website'
 pubDatetime: 2025-01-30
 description: 'This gap between engagement and conversion is where businesses lose money.'
 author: 'Daniel Adrian'

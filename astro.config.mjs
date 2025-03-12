@@ -4,6 +4,7 @@ import { SITE } from './src/consts';
 import sitemap from '@astrojs/sitemap';
 import svelte from '@astrojs/svelte';
 import { shield } from '@kindspells/astro-shield';
+import expressiveCode from 'astro-expressive-code';
 import { resolve } from 'node:path';
 
 const rootDir = new URL('.', import.meta.url).pathname;
@@ -18,10 +19,6 @@ export default defineConfig({
     shield({
       sri: { hashesModule: modulePath },
     }),
+    expressiveCode(),
   ],
-  markdown: {
-    shikiConfig: {
-      theme: 'andromeeda',
-    },
-  },
 });

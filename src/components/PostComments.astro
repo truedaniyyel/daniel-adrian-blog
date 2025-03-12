@@ -49,6 +49,7 @@
   }
 
   injectGiscus();
+  document.addEventListener('astro:after-swap', injectGiscus);
 </script>
 
 <style>

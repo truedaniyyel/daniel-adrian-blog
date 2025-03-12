@@ -44,7 +44,7 @@
     aria-label="Scroll to the top"
     transition:fade={{ duration: 150 }}
   >
-    {@html uiIcons.goUp}
+    {@html uiIcons.arrow.up}
   </button>
 {/if}
 
@@ -59,11 +59,17 @@
 <style>
   button {
     position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     right: var(--px-24);
     bottom: var(--px-24);
-    padding: var(--px-8) var(--px-12);
+    padding: var(--px-10) var(--px-12);
     border-radius: 100%;
-    font-weight: bold;
+  }
+
+  button :global(svg) {
+    width: var(--px-14);
   }
 
   .marker {

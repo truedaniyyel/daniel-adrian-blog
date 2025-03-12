@@ -2,7 +2,7 @@ import fs from 'fs/promises';
 import path from 'path';
 import {
   inlineScriptHashes,
-  inlineStyleHashes,
+  extScriptHashes,
 } from '../src/generated/sriHashes.mjs';
 
 const headersPath = path.join(process.cwd(), 'dist', '_headers');
@@ -10,29 +10,17 @@ const headersPath = path.join(process.cwd(), 'dist', '_headers');
 async function generateCSPHeader() {
   try {
     // Combine all script hashes
-    const scriptHashes = new Set([...inlineScriptHashes]);
-
-    // Combine all style hashes
-    const styleHashes = new Set([...inlineStyleHashes]);
+    const scriptHashes = new Set([...inlineScriptHashes, ...extScriptHashes]);
 
     // Generate CSP header
-    const cspHeader = `Content-Security-Policy: 
-    default-src 'self'; 
-    object-src 'self'; 
-    script-src 'self' https://giscus.app ${Array.from(scriptHashes)
-      .map(hash => `'${hash}'`)
-      .join(' ')}; 
-    connect-src 'self' https://giscus.app; 
-    style-src 'self' ${Array.from(styleHashes)
-      .map(hash => `'${hash}'`)
-      .join(' ')}; 
-    frame-src https://giscus.app;
-    base-uri 'self'; 
-    img-src 'self' https://ik.imagekit.io/truedaniyyel/; 
-    frame-ancestors 'none'; 
-    worker-src 'self'; 
-    manifest-src 'none'; 
-    form-action 'self';`.trim();
+    const cspHeader =
+      `Content-Security-Policy: default-src 'self'; object-src 'self'; script-src 'self' ${Array.from(
+        scriptHashes
+      )
+        .map(hash => `'${hash}'`)
+        .join(
+          ' '
+        )}; connect-src 'self'; style-src 'self' 'unsafe-inline'; base-uri 'self'; img-src 'self' https://ik.imagekit.io/truedaniyyel/ data:; frame-ancestors 'none'; worker-src 'self'; manifest-src 'none'; form-action 'self';`.trim();
 
     // Read existing _headers file
     let headersContent = await fs.readFile(headersPath, 'utf-8');
