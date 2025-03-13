@@ -275,6 +275,10 @@ mark {
   background-color: var(--surface-dark);
 }
 
+.expressive-code {
+  margin-bottom: var(--px-20);
+}
+
 /* Media queries */
 @media (max-width: 34.25rem) {
   body {

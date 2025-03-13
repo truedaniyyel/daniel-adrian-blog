@@ -6,13 +6,15 @@ export default defineEcConfig({
   themes: ['andromeeda'],
 
   styleOverrides: {
-    // You can also override styles
     borderRadius: '0.5rem',
     uiFontFamily: 'JetBrains Mono',
     codeFontFamily: 'JetBrains Mono',
     codeFontSize: '1rem',
     frames: {
       shadowColor: 'none',
+      editorBackground: '#07090f',
+      editorTabBarBackground: '#07090f',
+      editorActiveTabBackground: '#07090f',
     },
   },
 });

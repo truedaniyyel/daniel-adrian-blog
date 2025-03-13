@@ -245,8 +245,15 @@
 }
 
 /* Code block */
-.expressive-code {
-  margin-bottom: var(--px-20);
+:not(pre) > code {
+  background-color: var(--on-surface-light);
+  padding-inline: var(--px-6);
+  border-radius: var(--radius-on-surface);
+  font-size: 0.85em;
+}
+
+.dark :not(pre) > code {
+  background-color: var(--on-surface-dark);
 }
 
 /* Tables */

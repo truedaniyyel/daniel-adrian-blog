@@ -190,9 +190,9 @@ export const DEFAULT_IMAGE: ImageConfig = {
 
 ## How It Builds
 
-At build time, Astro will process everything in the pages folder (check (Astro
-documentation)[https://docs.astro.build/en/guides/endpoints/] for more
-information). We have two key files:
+At build time, Astro will process everything in the pages folder check [Astro
+documentation](https://docs.astro.build/en/guides/endpoints/) for more
+information. We have two key files:
 
 1. `src/og-image.webp.ts` - This builds the main site's OG image
 
