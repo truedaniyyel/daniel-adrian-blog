@@ -326,6 +326,7 @@
   }
 
   .nav-btn-icon :global(svg) {
+    height: var(--px-16);
     margin-block: var(--px-2);
   }
 
