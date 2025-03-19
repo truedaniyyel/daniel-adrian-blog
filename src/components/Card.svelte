@@ -45,7 +45,7 @@
     </ul>
   </div>
 
-  <div class="card-media">
+  <div class="card-media {post.data.image ? '' : 'no-image'}">
     {#if post.data.image}
       <img
         loading="lazy"
@@ -230,11 +230,16 @@
     .card-arrow {
       display: none;
     }
+
+    .card-media.no-image {
+      display: none;
+    }
   }
 
   @media (max-width: 34.25rem) {
     .card {
       padding-inline: var(--px-12);
+      padding-bottom: var(--px-12);
     }
 
     .card-content {
